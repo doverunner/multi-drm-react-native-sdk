@@ -1,6 +1,6 @@
-# **PallyCon React Native SDK** Development Guide
+# **DoveRunner React Native SDK** Development Guide
 
-A React-Native pallycon-react-native-sdk plugin which provides easy to apply Multi-DRM(Android: Widevine, iOS: FairPlay) when developing media service apps for Android and iOS. Please refer to the links below for detailed information.
+A React-Native plugin which provides easy to apply Multi-DRM(Android: Widevine, iOS: FairPlay) when developing media service apps for Android and iOS. Please refer to the links below for detailed information.
 
 ## **Support Environment**
 
@@ -9,21 +9,21 @@ A React-Native pallycon-react-native-sdk plugin which provides easy to apply Mul
 
 ## **Important**
 
-- To develop using the SDK, you must first sign up for the [PallyCon Site](https://pallycon.com/) and obtain a `Site ID`.
+- To develop using the SDK, you must first sign up for the [DoveRunner Site](https://doverunner.com/) and obtain a `Site ID`.
 
 ## **SDK usage**
 
-To add `PallyCon Multi-DRM Sdk` to your React-Native app, read the [Installation](https://yarnpkg.com/) instructions. Below are the Android and iOS properties required for `PallyConMultiDrmSdk` to work properly.
+To add `DoveRunner React Native SDK` to your React-Native app, read the [Installation](https://yarnpkg.com/) instructions. Below are the Android and iOS properties required for `PallyConMultiDrmSdk` to work properly.
 
-### PallyCon Multi-DRM SDK - Android, iOS
+### DoveRunner Multi-DRM SDK - Android, iOS
 
-The `pallycon-react-native-sdk` uses the [PallyCon Multi-DRM SDK](https://pallycon.com/sdk/). This `PallyCon Multi-DRM SDK` is used to acquire and manage licences. This SDK is applied to the forked [react-native-video](https://github.com/inka-pallycon/react-native-video.git) and downloaded when running `yarn install`.
+The `DoveRunner React Native SDK` uses the [DoveRunner Multi-DRM SDK](https://doverunner.com/). This `DoveRunner Multi-DRM SDK` is used to acquire and manage licences. This SDK is applied to the forked [react-native-video](https://github.com/doverunner/react-native-video.git) and downloaded when running `yarn install`.
 
 ### React Native Video
 
-The example project in `pallycon-react-native-sdk` uses [react-native-video](https://github.com/TheWidlarzGroup/react-native-video) to play DRM content.
+The example project in `DoveRunner React Native SDK` uses [react-native-video](https://github.com/TheWidlarzGroup/react-native-video) to play DRM content.
 
-The provided `react-native-video` is applied with `PallyCon Multi-DRM SDK`, and if you use `pallycon-react-native-sdk`, you need to configure it like below.
+The provided `react-native-video` is applied with `DoveRunner Multi-DRM SDK`, and if you use `DoveRunner React Native SDK`, you need to configure it like below.
 
 ```json
 dependencies: {
@@ -43,7 +43,7 @@ To integrate the Widevine Android SDK, follow these steps to add the GitHub pack
 
 ### 1. Update your `build.gradle` file
 
-Add the following code snippet to the `allprojects` section of your `build.gradle` file to include the PallyCon Widevine Android SDK GitHub repository:
+Add the following code snippet to the `allprojects` section of your `build.gradle` file to include the DoveRunner Widevine Android SDK GitHub repository:
 
 ```groovy
 allprojects {
@@ -84,7 +84,7 @@ android {
 <details>
 <summary>iOS</summary>
 
-`pallycon-react-native-sdk` uses cocoapods to install `PallyCon Multi-DRM iOS SDK`.
+`pallycon-react-native-sdk` uses cocoapods to install `DoveRunner Multi-DRM iOS SDK`.
 
 > For information on how to install and use cocoapods, please refer to the [cocoapods official website](https://cocoapods.org/).
 
@@ -97,7 +97,7 @@ android {
 
 - DRM content streaming playback
 
-### How to Run PallyCon React Native SDK Example
+### How to Run DoveRunner React Native SDK Example
 
 - Run the following command to execute the example.
 
@@ -291,5 +291,5 @@ PallyConMultiDrmSdk.removeLicense(PallyConContentConfiguration)
 Called when you end using the SDK.
 
 ```typescript
-PallyConMultiDrmSdk.release()
+DoveRunnerMultiDrmSdk.release()
 ```
