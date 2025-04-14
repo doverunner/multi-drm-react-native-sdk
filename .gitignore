@@ -645,3 +645,16 @@ obj/
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/reactnative,intellij,kotlin,xcode,android,androidstudio,swift,git,gradle
+
+pallycon-*.tgz
+pallycon-test
+yarn.lock
+examples/basic/.yarn/
+examples/basic/ios/*.lock
+examples/basic/ios/.xcode.env
+examples/basic/ios/.xcode.env.*
+examples/advanced/.yarn/
+examples/advanced/*.lock
+examples/advanced/ios/*.lock
+examples/advanced/ios/.xcode.env
+examples/advanced/ios/.xcode.env.*
