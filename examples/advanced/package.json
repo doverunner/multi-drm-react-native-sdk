@@ -15,6 +15,7 @@
     "@react-native/metro-config": "^0.75.3",
     "@react-navigation/native": "^6.1.5",
     "@react-navigation/native-stack": "^6.9.11",
+    "hermes-engine": "^0.11.0",
     "pallycon-react-native-sdk": "file:../../pallycon-react-native-sdk.tgz",
     "react": "^18.2.0",
     "react-native": "^0.75.2",
@@ -30,11 +31,11 @@
     "tr46": "^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
+    "@babel/core": "^7.26.10",
     "@babel/plugin-transform-class-properties": "^7.25.4",
     "@babel/plugin-transform-private-methods": "^7.25.4",
     "@babel/plugin-transform-private-property-in-object": "^7.24.7",
-    "@babel/preset-env": "^7.20.0",
+    "@babel/preset-env": "^7.26.9",
     "@babel/runtime": "^7.21.0",
     "@react-native-community/eslint-config": "^3.2.0",
     "@tsconfig/react-native": "^2.0.2",
