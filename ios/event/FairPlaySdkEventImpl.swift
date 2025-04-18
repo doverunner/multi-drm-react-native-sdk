@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PallyConEventImpl: PallyConEvent
+class FairPlaySdkEventImpl: PallyConEvent
 {
     public var emitter: RCTEventEmitter?
     
@@ -16,7 +16,7 @@ class PallyConEventImpl: PallyConEvent
         self.emitter = emitter
     }
     
-    func sendPallyConEvent(_ url: String, eventType: PallyConEventType, message: String, errorCode: String = "") {
+    func sendFairPlaySdkEvent(_ url: String, eventType: PallyConEventType, message: String, errorCode: String = "") {
         if (!Thread.isMainThread) {
             DispatchQueue.main.sync {
                 emitter?.sendEvent(withName: eventType.name, body: ["url": url, "message": message, "errorCode": errorCode])

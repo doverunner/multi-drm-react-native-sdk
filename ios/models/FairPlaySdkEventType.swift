@@ -1,6 +1,6 @@
 import Foundation
 
-enum PallyConEventType {
+enum FairPlaySdkEventType {
     case complete
     case download
     case pause
@@ -18,7 +18,7 @@ enum PallyConEventType {
     case progress
 }
 
-extension PallyConEventType {
+extension FairPlaySdkEventType {
     var name: String {
         switch self {
         case .complete: return "complete"

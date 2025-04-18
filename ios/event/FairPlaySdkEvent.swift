@@ -10,5 +10,5 @@ import Foundation
 
 protocol PallyConEvent
 {
-    func sendPallyConEvent(_ url: String, eventType: PallyConEventType, message: String, errorCode: String)
+    func sendFairPlaySdkEvent(_ url: String, eventType: PallyConEventType, message: String, errorCode: String)
 }
