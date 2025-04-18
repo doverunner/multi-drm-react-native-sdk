@@ -1,14 +1,14 @@
 //
-//  PallyConEventImpl.swift
-//  RNPallyConDrmSdk
+//  FairPlaySdkEventImpl.swift
+//  FairPlayReactNativeSdk
 //
 //  Created by sungju Yun on 2023/03/29.
-//  Copyright © 2023 Facebook. All rights reserved.
+//  Copyright © 2023 DOVERUNNER. All rights reserved.
 //
 
 import Foundation
 
-class FairPlaySdkEventImpl: PallyConEvent
+class FairPlaySdkEventImpl: FairPlaySdkEvent
 {
     public var emitter: RCTEventEmitter?
     
@@ -16,7 +16,7 @@ class FairPlaySdkEventImpl: PallyConEvent
         self.emitter = emitter
     }
     
-    func sendFairPlaySdkEvent(_ url: String, eventType: PallyConEventType, message: String, errorCode: String = "") {
+    func sendFairPlaySdkEvent(_ url: String, eventType: FairPlaySdkEventType, message: String, errorCode: String = "") {
         if (!Thread.isMainThread) {
             DispatchQueue.main.sync {
                 emitter?.sendEvent(withName: eventType.name, body: ["url": url, "message": message, "errorCode": errorCode])

@@ -225,7 +225,7 @@ export default function DrmMoviePlayerPage({ route }: any) {
         ref={videoRef}
         source={{
           uri: videoUrl, // URL을 여기에 추가
-          headers: { PallyConJson: decodedJson },
+          headers: { MultiDrmJson: decodedJson },
         }}
         style={viewStyle}
         rate={state.rate}
@@ -246,7 +246,7 @@ export default function DrmMoviePlayerPage({ route }: any) {
   //     <View style={styles.container}>
   //         <Video
   //             source={{
-  //                 headers: {PallyConJson: route.params.json},
+  //                 headers: {MultiDrmJson: route.params.json},
   //             }}
   //             style={styles.fullScreen}
   //             paused={false}

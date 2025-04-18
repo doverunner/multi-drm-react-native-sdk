@@ -1,6 +1,6 @@
 import {DrmType} from "./DrmType";
 
-export interface PallyConContentConfiguration {
+export interface DrmContentConfiguration {
     /** content url */
     contentUrl: string;
 

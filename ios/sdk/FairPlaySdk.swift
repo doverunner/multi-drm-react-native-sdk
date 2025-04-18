@@ -1,6 +1,6 @@
 import Foundation
 import AVKit
-import PallyConFPSSDK
+import DOVERUNNERFairPlay
 
 struct DrmContent {
     let siteId: String
@@ -49,7 +49,7 @@ struct DrmContent {
         self.downloadPath = path
     }
 
-    func toPallyConConfig() -> String {
+    func toFairPlayConfig() -> String {
 
         let customData = self.customData ?? ""
         let drmLicenseUrl = self.drmLicenseUrl ?? ""
@@ -61,21 +61,21 @@ struct DrmContent {
     }
 }
 
-class PallyConSdk: NSObject {
-    static let shared = PallyConSdk()
+class FairPlaySdk: NSObject {
+    static let shared = FairPlaySdk()
 
-    private var pallyConEvent: PallyConEvent?
+    private var sdkEvent: FairPlaySdkEvent?
     private var progressEvent: DownloadProgressEvent?
 
     private var siteId: String = ""
-    private var fpsSdk: PallyConFPSSDK?
+    private var fpsSdk: DOVERUNNERFairPlay?
     private var downloadTaskMap = [DownloadTask:DrmContent]()
     private var downloadedContentMap = [String:DrmContent]()
 
     static let baseDownloadURL: URL = URL(fileURLWithPath: NSHomeDirectory())
 
-    public func setPallyConEvent(pallyConEvent: PallyConEvent?) {
-        self.pallyConEvent = pallyConEvent
+    public func setFairPlaySdkEvent(event: FairPlaySdkEvent?) {
+        self.sdkEvent = event
     }
 
     public func setDownloadProgress(downloadProgressEvent: DownloadProgressEvent?) {
@@ -84,13 +84,7 @@ class PallyConSdk: NSObject {
 
     public func initialize(siteId: String) {
         self.siteId = siteId
-        do {
-            fpsSdk = try PallyConFPSSDK(siteId: self.siteId, siteKey: "", fpsLicenseDelegate: self)
-        } catch PallyConSDKException.DatabaseProcessError(let message) {
-             print("PallyConFPSSDK initilize failed.\n\(message)")
-        } catch {
-             print("Error: \(error).\nUnkown Error")
-        }
+        fpsSdk = DOVERUNNERFairPlay()
     }
 
     public func release()  {
@@ -112,7 +106,7 @@ class PallyConSdk: NSObject {
             drmContent.customData = customData
             drmContent.appleCertUrl = appleCertUrl ?? ""
             downloadedContentMap[url] = drmContent
-            return drmContent.toPallyConConfig()
+            return drmContent.toFairPlayConfig()
         } else {
             // Streaming
             let strToken = token ?? ""
@@ -134,7 +128,7 @@ class PallyConSdk: NSObject {
     }
 
     public func addStartDownload(url: String, contentId: String, token: String?, customData: String?, contentHttpHeaders: Dictionary<String, String>?, licenseHttpHeaders: Dictionary<String, String>?, contentCookie: String?, licenseCookie: String?, drmLicenseUrl: String?, appleCertUrl: String?) {
-//        sendPallyConEvent(url: url, eventType: PallyConEventType.complete, message: "Complete")
+//        sendFairPlaySdkEvent(url: url, eventType: FairPlaySdkEventType.complete, message: "Complete")
         for (task, downloadContent) in downloadTaskMap {
             print("download task \(downloadContent.contentId)")
             if downloadContent.url == url {
@@ -145,12 +139,12 @@ class PallyConSdk: NSObject {
         }
 
         guard let contentUrl:URL = URL(string: url) else {
-            pallyConEvent?.sendPallyConEvent(url, eventType: PallyConEventType.downloadError, message: "String to URL convert Error!", errorCode: "")
+            sdkEvent?.sendFairPlaySdkEvent(url, eventType: FairPlaySdkEventType.downloadError, message: "String to URL convert Error!", errorCode: "")
             return
         }
 
-        guard let downloadTask = fpsSdk?.createDownloadTask(url: contentUrl, token: token!, downloadDelegate: self) else {
-            pallyConEvent?.sendPallyConEvent(url, eventType: PallyConEventType.downloadError, message: "DownloadTask not Create! ", errorCode: "")
+        guard let downloadTask = fpsSdk?.createDownloadTask(url: contentUrl, contentId: contentId, token: token!, isAVAssetDownloadTask: true, downloadDelegate: self) else {
+            sdkEvent?.sendFairPlaySdkEvent(url, eventType: FairPlaySdkEventType.downloadError, message: "DownloadTask not Create! ", errorCode: "")
             return
         }
 
@@ -181,7 +175,7 @@ class PallyConSdk: NSObject {
             if downloadTaskMap[task]?.downloadState == DownloadState.downloading {
                 task.cancel()
                 downloadTaskMap[task]?.downloadState = DownloadState.pause
-                pallyConEvent?.sendPallyConEvent(downloadTaskMap[task]!.url, eventType: PallyConEventType.pause, message: "User Downloaded Content Pause", errorCode: "")
+                sdkEvent?.sendFairPlaySdkEvent(downloadTaskMap[task]!.url, eventType: FairPlaySdkEventType.pause, message: "User Downloaded Content Pause", errorCode: "")
             } else {
                 task.resume()
                 downloadTaskMap[task]?.downloadState = DownloadState.downloading
@@ -215,7 +209,7 @@ class PallyConSdk: NSObject {
         }
         self.deleteDowndloadedContent(for: downloadedContent)
         downloadedContentMap.removeValue(forKey: url)
-        pallyConEvent?.sendPallyConEvent(url, eventType: PallyConEventType.remove, message: "Remove Downloaded Content", errorCode: "")
+        sdkEvent?.sendFairPlaySdkEvent(url, eventType: FairPlaySdkEventType.remove, message: "Remove Downloaded Content", errorCode: "")
     }
 
     public func removeLicense(url: String) {
@@ -227,7 +221,7 @@ class PallyConSdk: NSObject {
 }
 
 
-extension PallyConSdk: PallyConFPSDownloadDelegate {
+extension FairPlaySdk: FairPlayDownloadDelegate {
     func downloadContent(_ contentId: String, didStartDownloadWithAsset asset: AVURLAsset, subtitleDisplayName: String) {
         print("downloadContent : didStartDownloadWithAsset\(contentId) : \(subtitleDisplayName)")
         guard let downloadEvent = self.progressEvent else {
@@ -249,46 +243,32 @@ extension PallyConSdk: PallyConFPSDownloadDelegate {
 
     func downloadContent(_ contentId: String, didStopWithError error: Error?) {
         print("downloadContent : didStopWithError \(contentId)")
-        var isError: Bool = false
-        var localPath: String?
-        var stopError: Error?
-        if let error = error as? PallyConSDKException {
-            switch error {
-            case .DownloadUserCancel(let filePath):
-                print("User Cancel Error \(filePath)")
-                localPath = filePath
-                stopError = error
-                break
-            case .DownloadUnknownError(let filePath):
-                isError = true
-                localPath = filePath
-                stopError = error
-                break
-            case .DownloadDefaultError(let networkError, let filePath):
-                print("didStopWithError error = \(networkError) \(filePath)")
-                let alert = UIAlertController(title: "Download Failed", message: "If you want to download, please try again", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default))
-                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
-            default:
-                print("Error: \(error). Unkown.")
-                isError = true
-                break
+        if let downloadError = error as NSError? {
+            switch downloadError.code {
+                case NSURLErrorCancelled:
+                    // User cancellation is not a typical error, so no additional handling needed.
+                    break
+                case NSURLErrorNetworkConnectionLost:
+                    showErrorAlert(title: "Network Error", message: "Connection was lost. Please try again.")
+                case NSURLErrorTimedOut:
+                    showErrorAlert(title: "Timeout Error", message: "Request timed out. Please try again later.")
+                case NSURLErrorUnknown:
+                    let detailedMessage = "Unknown error: \(downloadError.domain)\nCode: \(downloadError.code)\nDetails: \(downloadError.localizedDescription)"
+                    showErrorAlert(title: "Download Failed", message: detailedMessage)
+                default:
+                    showErrorAlert(title: "Download Failed", message: "Error: \(downloadError.localizedDescription)")
             }
         }
 
         var contentUrl:String = ""
-        if isError {
-            for (task, downloadContent) in downloadTaskMap {
-                if downloadContent.contentId == contentId {
-                    contentUrl = downloadContent.url
-                    downloadTaskMap.removeValue(forKey: task)
-                    break
-                }
+        for (task, downloadContent) in downloadTaskMap {
+            if downloadContent.contentId == contentId {
+                contentUrl = downloadContent.url
+                downloadTaskMap.removeValue(forKey: task)
+                break
             }
-            pallyConEvent?.sendPallyConEvent(contentUrl, eventType: PallyConEventType.unknownError, message: "download stop : \(String(describing: localPath))", errorCode: "")
-        } else {
-            pallyConEvent?.sendPallyConEvent(contentUrl, eventType: PallyConEventType.pause, message: "user download stop : \(String(describing: localPath))", errorCode: "")
         }
+        sdkEvent?.sendFairPlaySdkEvent(contentUrl, eventType: FairPlaySdkEventType.pause, message: "download stop : \(contentId)", errorCode: "")
 
     }
 
@@ -305,7 +285,7 @@ extension PallyConSdk: PallyConFPSDownloadDelegate {
             }
         }
 
-        pallyConEvent?.sendPallyConEvent(contentUrl, eventType: PallyConEventType.complete, message: "\(location.absoluteString)", errorCode: "")
+        sdkEvent?.sendFairPlaySdkEvent(contentUrl, eventType: FairPlaySdkEventType.complete, message: "\(location.absoluteString)", errorCode: "")
         return
     }
 
@@ -330,58 +310,70 @@ extension PallyConSdk: PallyConFPSDownloadDelegate {
 //        self.setDownloadProgress(eventSink: downloadEvent)
         print("downloadContent : didFinishDownloadingTo : \(contentId) : \(percentComplete*100)")
     }
+    
+    private func showErrorAlert(title: String, message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let rootViewController = windowScene.windows.first?.rootViewController {
+                rootViewController.present(alert, animated: true)
+            }
+        }
+    }
 }
 
 
-extension PallyConSdk: PallyConFPSLicenseDelegate {
+extension FairPlaySdk: FairPlayLicenseDelegate {
     func fpsLicenseDidSuccessAcquiring(contentId: String) {
         print("License Success : \(contentId)")
-        pallyConEvent?.sendPallyConEvent(contentId, eventType: PallyConEventType.complete, message: contentId, errorCode: "")
+        sdkEvent?.sendFairPlaySdkEvent(contentId, eventType: FairPlaySdkEventType.complete, message: contentId, errorCode: "")
     }
 
     func fpsLicense(contentId: String, didFailWithError error: Error) {
         print("License Failed  : \(contentId)")
 
         var errorMessage = ""
-        var eventType: PallyConEventType = PallyConEventType.licenseServerError
+        var eventType: FairPlaySdkEventType = FairPlaySdkEventType.licenseServerError
         if let error = error as? PallyConSDKException {
             switch error {
             case .ServerConnectionFail(let message):
-                eventType = PallyConEventType.licenseServerError
+                eventType = FairPlaySdkEventType.licenseServerError
                 errorMessage = "server connection fail = \(message)"
             case .NetworkError(let networkError):
                 errorMessage = "Network Error = \(networkError)"
-                eventType = PallyConEventType.networkConnectedError
+                eventType = FairPlaySdkEventType.networkConnectedError
             case .AcquireLicenseFailFromServer(let code, let message):
                 errorMessage = "ServerCode = \(code).\n\(message)"
-                eventType = PallyConEventType.licenseServerError
+                eventType = FairPlaySdkEventType.licenseServerError
             case .DatabaseProcessError(let message):
                 errorMessage = "DB Error = \(message)"
-                eventType = PallyConEventType.drmError
+                eventType = FairPlaySdkEventType.drmError
             case .InternalException(let message):
                 errorMessage = "SDK internal Error = \(message)"
-                eventType = PallyConEventType.drmError
+                eventType = FairPlaySdkEventType.drmError
             default:
                 print("Error: \(error). Unkown.")
-                eventType = PallyConEventType.unknownError
+                eventType = FairPlaySdkEventType.unknownError
                 break
             }
         } else {
             print("Error: \(error). Unkown")
         }
 
-        pallyConEvent?.sendPallyConEvent(contentId, eventType: eventType, message: errorMessage, errorCode: "")
+        sdkEvent?.sendFairPlaySdkEvent(contentId, eventType: eventType, message: errorMessage, errorCode: "")
     }
 }
 
 
-extension PallyConSdk {
+extension FairPlaySdk {
     // managed download contents
     func loadDownloadedContent(with url: String, contentId: String ) -> DrmContent? {
         let userDefaults = UserDefaults.standard
         guard let localFileLocation = userDefaults.value(forKey: url) as? String else { return nil }
 
-        let localFilePath = PallyConSdk.baseDownloadURL.appendingPathComponent(localFileLocation)
+        let localFilePath = FairPlaySdk.baseDownloadURL.appendingPathComponent(localFileLocation)
         print("\(localFilePath.absoluteString)")
         if FileManager.default.fileExists(atPath: localFilePath.path) {
             let drmContent = DrmContent(siteId: self.siteId, url: url, contentId: contentId, path: localFilePath.absoluteString)
@@ -393,7 +385,7 @@ extension PallyConSdk {
     func saveDownloadedContent(for drmContent: DrmContent, location: URL) {
         downloadedContentMap[drmContent.url] = drmContent
         downloadedContentMap[drmContent.url]?.downloadState = DownloadState.completed
-        let contentUrl =  PallyConSdk.baseDownloadURL.appendingPathComponent(location.relativePath)
+        let contentUrl =  FairPlaySdk.baseDownloadURL.appendingPathComponent(location.relativePath)
         downloadedContentMap[drmContent.url]?.downloadPath = contentUrl.absoluteString
         let userDefaults = UserDefaults.standard
         userDefaults.set(location.relativePath, forKey: drmContent.url)
@@ -404,7 +396,7 @@ extension PallyConSdk {
 
         do {
             if let localFileLocation = userDefaults.value(forKey: drmContent.url) as? String {
-                let localFileLocation = PallyConSdk.baseDownloadURL.appendingPathComponent(localFileLocation)
+                let localFileLocation = FairPlaySdk.baseDownloadURL.appendingPathComponent(localFileLocation)
                 try FileManager.default.removeItem(at: localFileLocation)
                 userDefaults.removeObject(forKey: drmContent.url)
 

@@ -24,7 +24,7 @@
   ```json
   "dependencies": {
     "pallycon-react-native-sdk": "^1.1.2",
-    "react-native-video": "git+https://github.com/inka-pallycon/react-native-video.git"
+    "react-native-video": "git+https://github.com/doverunner/react-native-video.git"
   }
   ``` 
 
@@ -94,7 +94,7 @@
   "_comment": "path : examples/advanced/package.json or examples/basic/package.json",
 
   "dependencies": {
-    "react-native-video": "git+https://github.com/inka-pallycon/react-native-video.git"
+    "react-native-video": "git+https://github.com/doverunner/react-native-video.git"
   }
   ```
 
@@ -146,8 +146,8 @@ This section describes the `PallyCon React Native SDK` API.
   ```typescript
   import PallyConMultiDrmSdk, {
     PallyConEventType,
-    PallyConContentConfiguration,
-    PallyConDownloadState,
+    DrmContentConfiguration,
+    ContentDownloadState,
   } from "pallycon-react-native-sdk"
   ```
 
@@ -210,11 +210,11 @@ This section describes the `PallyCon React Native SDK` API.
   try {
     const state = await PallyConMultiDrmSdk.getDownloadState(config)
     switch (state) {
-      case PallyConDownloadState.DOWNLOADING:
+      case ContentDownloadState.DOWNLOADING:
         break
-      case PallyConDownloadState.PAUSED:
+      case ContentDownloadState.PAUSED:
         break
-      case PallyConDownloadState.COMPLETED:
+      case ContentDownloadState.COMPLETED:
         break
       default:
         break
@@ -231,7 +231,7 @@ This section describes the `PallyCon React Native SDK` API.
   ```typescript
   // ex) advanced/src/presentation/controllers/DrmMovieController.ts
   // start download
-  PallyConMultiDrmSdk.addStartDownload(PallyConContentConfiguration)
+  PallyConMultiDrmSdk.addStartDownload(DrmContentConfiguration)
 
   // cancel downloads
   PallyConMultiDrmSdk.cancelDownloads()
@@ -250,10 +250,10 @@ This section describes the `PallyCon React Native SDK` API.
   ```typescript
   // ex) advanced/src/presentation/controllers/DrmMovieController.ts
   // remove downloaded content
-  PallyConMultiDrmSdk.removeDownload(PallyConContentConfiguration)
+  PallyConMultiDrmSdk.removeDownload(DrmContentConfiguration)
 
   // remove license for content
-  PallyConMultiDrmSdk.removeLicense(PallyConContentConfiguration)
+  PallyConMultiDrmSdk.removeLicense(DrmContentConfiguration)
   ```
 
 ### **Release**

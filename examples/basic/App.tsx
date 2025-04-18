@@ -6,9 +6,9 @@ import {
     ActivityIndicator
 } from 'react-native';
 import {
-    PallyConContentConfiguration
-} from 'pallycon-react-native-sdk';
-import PallyConDrmSdk from 'pallycon-react-native-sdk';
+    DrmContentConfiguration
+} from 'doverunner-react-native-sdk';
+import ReactMultiDrmSdk from 'doverunner-react-native-sdk';
 import Video from 'react-native-video';
 import base64 from 'react-native-base64';
 
@@ -22,9 +22,9 @@ const App = () => {
             try {
                 // PallyCon sdk use
                 // Initialize PallyCon Sdk with ‘DEMO’ site ID
-                PallyConDrmSdk.initialize('DEMO');
+                ReactMultiDrmSdk.initialize('DEMO');
 
-                let config: PallyConContentConfiguration;
+                let config: DrmContentConfiguration;
                 if (Platform.OS === 'android') {
                     // android
                     config = {
@@ -41,7 +41,7 @@ const App = () => {
                     };
                 }
                 // Set the source object for the video player with the content configuration
-                const sourceObject = await PallyConDrmSdk.getObjectForContent(config);
+                const sourceObject = await ReactMultiDrmSdk.getObjectForContent(config);
                 const decodedJson: string = base64.decode(sourceObject);
                 let parsedData;
                 try {
@@ -98,7 +98,7 @@ const App = () => {
             <Video
                 source={{
                     uri: videoUrl,
-                    headers: { PallyConJson: decodedJson }
+                    headers: { MultiDrmJson: decodedJson }
                 }}
                 style={viewStyle}
                 rate={state.rate}

@@ -1,3 +1,3 @@
-export * from './PallyConContentConfiguration';
+export * from './DrmContentConfiguration';
 export * from './DrmType';
-export * from './PallyConDownloadState';
+export * from './ContentDownloadState';

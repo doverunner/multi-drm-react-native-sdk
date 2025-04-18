@@ -1,9 +1,9 @@
 //
 //  EventEmitter.swift
-//  RNPallyConDrmSdk
+//  FairPlayReactNativeSdk
 //
 //  Created by sungju Yun on 2023/01/30.
-//  Copyright © 2023 Facebook. All rights reserved.
+//  Copyright © 2023 DOVERUNNER. All rights reserved.
 //
 
 import Foundation
@@ -12,31 +12,32 @@ class EventEmitter {
 
     public static var shared = EventEmitter()
 
-    private var eventEmitter: RNPallyConDrmSdk!
-
-    func register(eventEmitter: RNPallyConDrmSdk) {
-        self.eventEmitter = eventEmitter
-    }
-
-    func emit(event: PallyConEventType, body: Any?) {
-        self.eventEmitter.sendEvent(withName: event.name, body: body)
-    }
+// Events sent to ReactNative are implemented in FairPlaySdkEventImpl.
+//    private var eventEmitter: FairPlayReactNativeSdk!
+//    
+//    func register(eventEmitter: FairPlayReactNativeSdk) {
+//        self.eventEmitter = eventEmitter
+//    }
+//
+//    func emit(event: FairPlaySdkEventType, body: Any?) {
+//        self.eventEmitter.sendEvent(withName: event.name, body: body)
+//    }
 
     var allEvents = [
-        PallyConEventType.complete.name,
-        PallyConEventType.download.name,
-        PallyConEventType.pause.name,
-        PallyConEventType.remove.name,
-        PallyConEventType.stop.name,
-        PallyConEventType.contentDataError.name,
-        PallyConEventType.drmError.name,
-        PallyConEventType.licenseServerError.name,
-        PallyConEventType.downloadError.name,
-        PallyConEventType.networkConnectedError.name,
-        PallyConEventType.detectedDeviceTimeModifiedError.name,
-        PallyConEventType.migrationError.name,
-        PallyConEventType.licenseCipherError.name,
-        PallyConEventType.unknownError.name,
-        PallyConEventType.progress.name,
+        FairPlaySdkEventType.complete.name,
+        FairPlaySdkEventType.download.name,
+        FairPlaySdkEventType.pause.name,
+        FairPlaySdkEventType.remove.name,
+        FairPlaySdkEventType.stop.name,
+        FairPlaySdkEventType.contentDataError.name,
+        FairPlaySdkEventType.drmError.name,
+        FairPlaySdkEventType.licenseServerError.name,
+        FairPlaySdkEventType.downloadError.name,
+        FairPlaySdkEventType.networkConnectedError.name,
+        FairPlaySdkEventType.detectedDeviceTimeModifiedError.name,
+        FairPlaySdkEventType.migrationError.name,
+        FairPlaySdkEventType.licenseCipherError.name,
+        FairPlaySdkEventType.unknownError.name,
+        FairPlaySdkEventType.progress.name,
     ]
 }

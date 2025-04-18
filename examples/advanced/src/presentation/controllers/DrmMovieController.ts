@@ -4,23 +4,23 @@ import { GetDrmMovies } from "../../domain/usecase/GetDrmMovieUseCase"
 import { MovieRepositoryImpl } from "../../data/repository/MovieRepositoryImpl"
 import MovieUserDataSourceImpl from "../../data/datasource/MovieUserDataSource"
 import { downloadState } from "../../domain/model/DownloadState"
-import PallyConMultiDrmSdk, {
+import MultiDrmSdk, {
   PallyConEventType,
-  PallyConContentConfiguration,
-  PallyConDownloadState,
-} from "pallycon-react-native-sdk"
+  DrmContentConfiguration,
+  ContentDownloadState,
+} from "doverunner-react-native-sdk"
 
 export default function DrmMovieController() {
   const [movies, setMovies] = useState<DrmMovie[]>([])
   const [pallyConContentConfigs, setPallyConContentConfigs] = useState<
-    PallyConContentConfiguration[]
+  DrmContentConfiguration[]
   >([])
   const [downloadPercent, setDownloadPercent] = useState<[string, number][]>([])
   const [error, setError] = useState<string>("")
   const [isSdkInit, setSdkInit] = useState<boolean>(false)
   const siteId = "DEMO"
   const [listeners, setListeners] = useState<
-    ReturnType<typeof PallyConMultiDrmSdk.addPallyConEvent>[]
+    ReturnType<typeof MultiDrmSdk.addPallyConEvent>[]
   >([])
 
   const UseCase = new GetDrmMovies(
@@ -29,14 +29,14 @@ export default function DrmMovieController() {
 
   const sdkInit = () => {
     setSdkInit(true)
-    PallyConMultiDrmSdk.initialize(siteId)
+    MultiDrmSdk.initialize(siteId)
   }
 
-  const setPallyConEvents = () => {
+  const setMultiDrmEvents = () => {
     if (listeners.length == 0) {
       const events = []
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.complete,
           (event) => {
             updateMovies(event.url, "downloadState", downloadState.success)
@@ -45,7 +45,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.pause,
           (event) => {
             updateMovies(event.url, "downloadState", downloadState.pause)
@@ -54,7 +54,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.remove,
           (event) => {
             updateMovies(event.url, "downloadState", "")
@@ -63,7 +63,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.stop,
           (event) => {
             updateMovies(event.url, "downloadState", "")
@@ -72,7 +72,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.download,
           (event) => {
             updateMovies(event.url, "downloadState", downloadState.running)
@@ -81,7 +81,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.contentDataError,
           (event) => {
             setError(event.errorCode + ": " + event.message)
@@ -90,7 +90,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.drmError,
           (event) => {
             setError(event.errorCode + ": " + event.message)
@@ -100,7 +100,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.licenseServerError,
           (event) => {
             setError(event.errorCode + ": " + event.message)
@@ -109,7 +109,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.downloadError,
           (event) => {
             setError(event.errorCode + ": " + event.message)
@@ -119,7 +119,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.networkConnectedError,
           (event) => {
             setError(event.errorCode + ": " + event.message)
@@ -128,7 +128,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.detectedDeviceTimeModifiedError,
           (event) => {
             setError(event.errorCode + ": " + event.message)
@@ -137,7 +137,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.migrationError,
           (event) => {
             setError(event.errorCode + ": " + event.message)
@@ -146,7 +146,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.licenseCipherError,
           (event) => {
             setError(event.errorCode + ": " + event.message)
@@ -155,7 +155,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.unknownError,
           (event) => {
             setError(event.errorCode + ": " + event.message)
@@ -164,7 +164,7 @@ export default function DrmMovieController() {
       )
 
       events.push(
-        PallyConMultiDrmSdk.addPallyConEvent(
+        MultiDrmSdk.addPallyConEvent(
           PallyConEventType.progress,
           (event) => {
             updateProgress(event.url, event.percent)
@@ -175,7 +175,7 @@ export default function DrmMovieController() {
       setListeners(events)
     }
 
-    PallyConMultiDrmSdk.setPallyConEvents()
+    MultiDrmSdk.setMultiDrmEvents()
   }
 
   const updateMovies = useCallback(
@@ -198,15 +198,15 @@ export default function DrmMovieController() {
     await setConfigs(await UseCase.invoke())
   }
 
-  const downloadCheck = async (config: PallyConContentConfiguration) => {
+  const downloadCheck = async (config: DrmContentConfiguration) => {
     try {
-      const state = await PallyConMultiDrmSdk.getDownloadState(config)
+      const state = await MultiDrmSdk.getDownloadState(config)
       switch (state) {
-        case PallyConDownloadState.DOWNLOADING:
+        case ContentDownloadState.DOWNLOADING:
           return downloadState.running
-        case PallyConDownloadState.PAUSED:
+        case ContentDownloadState.PAUSED:
           return downloadState.pause
-        case PallyConDownloadState.COMPLETED:
+        case ContentDownloadState.COMPLETED:
           return downloadState.success
         default:
           return downloadState.pending
@@ -218,10 +218,10 @@ export default function DrmMovieController() {
   }
 
   const setConfigs = async (drmMovies: DrmMovie[]) => {
-    const configs: PallyConContentConfiguration[] = []
+    const configs: DrmContentConfiguration[] = []
     const movies: DrmMovie[] = []
     for (let i = 0; i < drmMovies.length; i++) {
-      const config: PallyConContentConfiguration = {
+      const config: DrmContentConfiguration = {
         contentUrl: drmMovies[i].url,
         contentId: drmMovies[i].contentId,
         token: drmMovies[i].token,
@@ -230,11 +230,11 @@ export default function DrmMovieController() {
         certificateUrl: drmMovies[i].certificateUrl,
       }
 
-      const needsMigration = await PallyConMultiDrmSdk.needsMigrateDatabase(
+      const needsMigration = await MultiDrmSdk.needsMigrateDatabase(
         config
       )
       if (needsMigration) {
-        await PallyConMultiDrmSdk.migrateDatabase(config)
+        await MultiDrmSdk.migrateDatabase(config)
       }
 
       const downloadState = await downloadCheck(config)
@@ -258,7 +258,7 @@ export default function DrmMovieController() {
     )
 
     try {
-      return await PallyConMultiDrmSdk.getObjectForContent(
+      return await MultiDrmSdk.getObjectForContent(
         pallyConContentConfigs[index]
       )
     } catch (e: any) {
@@ -276,10 +276,10 @@ export default function DrmMovieController() {
       (element) => element.contentUrl === movie.url
     )
     if (movies[index].downloadState === downloadState.pause) {
-      await PallyConMultiDrmSdk.resumeDownloads()
+      await MultiDrmSdk.resumeDownloads()
     } else {
       try {
-        await PallyConMultiDrmSdk.addStartDownload(
+        await MultiDrmSdk.addStartDownload(
           pallyConContentConfigs[index]
         )
       } catch (e: any) {
@@ -295,7 +295,7 @@ export default function DrmMovieController() {
       sdkInit()
     }
 
-    PallyConMultiDrmSdk.pauseDownloads()
+    MultiDrmSdk.pauseDownloads()
   }
 
   const removeMovie = async (movie: DrmMovie): Promise<void> => {
@@ -308,7 +308,7 @@ export default function DrmMovieController() {
     )
 
     try {
-      await PallyConMultiDrmSdk.removeDownload(pallyConContentConfigs[index])
+      await MultiDrmSdk.removeDownload(pallyConContentConfigs[index])
     } catch (e: any) {
       setError(e.message)
     }
@@ -324,7 +324,7 @@ export default function DrmMovieController() {
     )
 
     try {
-      await PallyConMultiDrmSdk.removeLicense(pallyConContentConfigs[index])
+      await MultiDrmSdk.removeLicense(pallyConContentConfigs[index])
     } catch (e: any) {
       setError(e.message)
     }
@@ -367,7 +367,7 @@ export default function DrmMovieController() {
 
   return {
     sdkInit,
-    setPallyConEvents,
+    setMultiDrmEvents,
     getMovies,
     getPlayerData,
     downloadMovie,

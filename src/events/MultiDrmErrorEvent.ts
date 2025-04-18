@@ -1,4 +1,4 @@
-export interface PallyConErrorEvent {
+export interface MultiDrmErrorEvent {
     /** The track url */
     url: string | null;
     /** error code */

@@ -1,4 +1,4 @@
-export enum PallyConDownloadState {
+export enum ContentDownloadState {
     NOT = 'NOT',
     DOWNLOADING = 'DOWNLOADING',
     COMPLETED = 'COMPLETED',

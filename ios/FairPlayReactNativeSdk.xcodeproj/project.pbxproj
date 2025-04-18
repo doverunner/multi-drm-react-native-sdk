@@ -3,21 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3E7B58A1CC2AC0600A0062D /* RNPallyConDrmSdkBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNPallyConDrmSdkBridge.m */; };
-		B40ECC5E2980990000FB354E /* RNPallyConDrmSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40ECC5D2980990000FB354E /* RNPallyConDrmSdk.swift */; };
-		B4E0AAD929D2BEAA00FEC09F /* PallyConSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0AAD829D2BEAA00FEC09F /* PallyConSdk.swift */; };
-		B4E0AADE29D3BA2300FEC09F /* PallyConEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0AADD29D3BA2300FEC09F /* PallyConEvent.swift */; };
-		B4E0AAE029D3BAD000FEC09F /* PallyConEventImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0AADF29D3BAD000FEC09F /* PallyConEventImpl.swift */; };
+		B3E7B58A1CC2AC0600A0062D /* FairPlayReactNativeSdkBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* FairPlayReactNativeSdkBridge.m */; };
+		B40ECC5E2980990000FB354E /* FairPlayReactNativeSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40ECC5D2980990000FB354E /* FairPlayReactNativeSdk.swift */; };
+		B4E0AAD929D2BEAA00FEC09F /* FairPlaySdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0AAD829D2BEAA00FEC09F /* FairPlaySdk.swift */; };
+		B4E0AADE29D3BA2300FEC09F /* FairPlaySdkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0AADD29D3BA2300FEC09F /* FairPlaySdkEvent.swift */; };
+		B4E0AAE029D3BAD000FEC09F /* FairPlaySdkEventImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0AADF29D3BAD000FEC09F /* FairPlaySdkEventImpl.swift */; };
 		B4E0AAE229D3C18000FEC09F /* DownloadProgressEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0AAE129D3C18000FEC09F /* DownloadProgressEvent.swift */; };
 		B4E0AAE429D3C18900FEC09F /* DownloadProgressEventImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0AAE329D3C18900FEC09F /* DownloadProgressEventImpl.swift */; };
-		B4E0AAE629D3CAC900FEC09F /* PallyConEventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0AAE529D3CAC900FEC09F /* PallyConEventType.swift */; };
+		B4E0AAE629D3CAC900FEC09F /* FairPlaySdkEventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0AAE529D3CAC900FEC09F /* FairPlaySdkEventType.swift */; };
 		B4E0AAE829D3CB2200FEC09F /* DownloadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0AAE729D3CB2200FEC09F /* DownloadState.swift */; };
-		B4F31F4829873B6100A916D3 /* RNPallyConDrmSdkBridge.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3E7B5881CC2AC0600A0062D /* RNPallyConDrmSdkBridge.h */; };
+		B4F31F4829873B6100A916D3 /* FairPlayReactNativeSdkBridge.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3E7B5881CC2AC0600A0062D /* FairPlayReactNativeSdkBridge.h */; };
 		B4F31F4C2987404B00A916D3 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F31F4B2987404B00A916D3 /* EventEmitter.swift */; };
+		C15E64482DAF3B6F00F5A313 /* DOVERUNNERFairPlay.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15E64472DAF3B6F00F5A313 /* DOVERUNNERFairPlay.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,26 +28,37 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				B4F31F4829873B6100A916D3 /* RNPallyConDrmSdkBridge.h in CopyFiles */,
+				B4F31F4829873B6100A916D3 /* FairPlayReactNativeSdkBridge.h in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C15E644A2DAF3B6F00F5A313 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		134814201AA4EA6300B7C361 /* libRNPallyConDrmSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNPallyConDrmSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5881CC2AC0600A0062D /* RNPallyConDrmSdkBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPallyConDrmSdkBridge.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* RNPallyConDrmSdkBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPallyConDrmSdkBridge.m; sourceTree = "<group>"; };
-		B40ECC5C2980990000FB354E /* RNPallyConDrmSdk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNPallyConDrmSdk-Bridging-Header.h"; sourceTree = "<group>"; };
-		B40ECC5D2980990000FB354E /* RNPallyConDrmSdk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNPallyConDrmSdk.swift; sourceTree = "<group>"; };
-		B4E0AAD829D2BEAA00FEC09F /* PallyConSdk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PallyConSdk.swift; sourceTree = "<group>"; };
-		B4E0AADD29D3BA2300FEC09F /* PallyConEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PallyConEvent.swift; sourceTree = "<group>"; };
-		B4E0AADF29D3BAD000FEC09F /* PallyConEventImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PallyConEventImpl.swift; sourceTree = "<group>"; };
+		134814201AA4EA6300B7C361 /* libFairPlayReactNativeSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFairPlayReactNativeSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3E7B5881CC2AC0600A0062D /* FairPlayReactNativeSdkBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FairPlayReactNativeSdkBridge.h; sourceTree = "<group>"; };
+		B3E7B5891CC2AC0600A0062D /* FairPlayReactNativeSdkBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FairPlayReactNativeSdkBridge.m; sourceTree = "<group>"; };
+		B40ECC5C2980990000FB354E /* FairPlayReactNativeSdk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FairPlayReactNativeSdk-Bridging-Header.h"; sourceTree = "<group>"; };
+		B40ECC5D2980990000FB354E /* FairPlayReactNativeSdk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairPlayReactNativeSdk.swift; sourceTree = "<group>"; };
+		B4E0AAD829D2BEAA00FEC09F /* FairPlaySdk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairPlaySdk.swift; sourceTree = "<group>"; };
+		B4E0AADD29D3BA2300FEC09F /* FairPlaySdkEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairPlaySdkEvent.swift; sourceTree = "<group>"; };
+		B4E0AADF29D3BAD000FEC09F /* FairPlaySdkEventImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairPlaySdkEventImpl.swift; sourceTree = "<group>"; };
 		B4E0AAE129D3C18000FEC09F /* DownloadProgressEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProgressEvent.swift; sourceTree = "<group>"; };
 		B4E0AAE329D3C18900FEC09F /* DownloadProgressEventImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProgressEventImpl.swift; sourceTree = "<group>"; };
-		B4E0AAE529D3CAC900FEC09F /* PallyConEventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PallyConEventType.swift; sourceTree = "<group>"; };
+		B4E0AAE529D3CAC900FEC09F /* FairPlaySdkEventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairPlaySdkEventType.swift; sourceTree = "<group>"; };
 		B4E0AAE729D3CB2200FEC09F /* DownloadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadState.swift; sourceTree = "<group>"; };
 		B4F31F4B2987404B00A916D3 /* EventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitter.swift; sourceTree = "<group>"; };
+		C15E64472DAF3B6F00F5A313 /* DOVERUNNERFairPlay.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DOVERUNNERFairPlay.xcframework; path = ../../temp/2.5.0/lib/DOVERUNNERFairPlay.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C15E64482DAF3B6F00F5A313 /* DOVERUNNERFairPlay.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +76,7 @@
 		134814211AA4EA7D00B7C361 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				134814201AA4EA6300B7C361 /* libRNPallyConDrmSdk.a */,
+				134814201AA4EA6300B7C361 /* libFairPlayReactNativeSdk.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,11 +88,11 @@
 				B4E0AADA29D2BEFC00FEC09F /* models */,
 				B4E0AAD729D2BE9C00FEC09F /* sdk */,
 				B4F31F4A2987404200A916D3 /* Util */,
-				B40ECC5D2980990000FB354E /* RNPallyConDrmSdk.swift */,
-				B3E7B5881CC2AC0600A0062D /* RNPallyConDrmSdkBridge.h */,
-				B3E7B5891CC2AC0600A0062D /* RNPallyConDrmSdkBridge.m */,
+				B40ECC5D2980990000FB354E /* FairPlayReactNativeSdk.swift */,
+				B3E7B5881CC2AC0600A0062D /* FairPlayReactNativeSdkBridge.h */,
+				B3E7B5891CC2AC0600A0062D /* FairPlayReactNativeSdkBridge.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
-				B40ECC5C2980990000FB354E /* RNPallyConDrmSdk-Bridging-Header.h */,
+				B40ECC5C2980990000FB354E /* FairPlayReactNativeSdk-Bridging-Header.h */,
 				B41F404429DA95DF00392AC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -87,6 +100,7 @@
 		B41F404429DA95DF00392AC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C15E64472DAF3B6F00F5A313 /* DOVERUNNERFairPlay.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -94,7 +108,7 @@
 		B4E0AAD729D2BE9C00FEC09F /* sdk */ = {
 			isa = PBXGroup;
 			children = (
-				B4E0AAD829D2BEAA00FEC09F /* PallyConSdk.swift */,
+				B4E0AAD829D2BEAA00FEC09F /* FairPlaySdk.swift */,
 			);
 			path = sdk;
 			sourceTree = "<group>";
@@ -102,7 +116,7 @@
 		B4E0AADA29D2BEFC00FEC09F /* models */ = {
 			isa = PBXGroup;
 			children = (
-				B4E0AAE529D3CAC900FEC09F /* PallyConEventType.swift */,
+				B4E0AAE529D3CAC900FEC09F /* FairPlaySdkEventType.swift */,
 				B4E0AAE729D3CB2200FEC09F /* DownloadState.swift */,
 			);
 			path = models;
@@ -111,8 +125,8 @@
 		B4E0AADC29D3BA1300FEC09F /* event */ = {
 			isa = PBXGroup;
 			children = (
-				B4E0AADD29D3BA2300FEC09F /* PallyConEvent.swift */,
-				B4E0AADF29D3BAD000FEC09F /* PallyConEventImpl.swift */,
+				B4E0AADD29D3BA2300FEC09F /* FairPlaySdkEvent.swift */,
+				B4E0AADF29D3BAD000FEC09F /* FairPlaySdkEventImpl.swift */,
 				B4E0AAE129D3C18000FEC09F /* DownloadProgressEvent.swift */,
 				B4E0AAE329D3C18900FEC09F /* DownloadProgressEventImpl.swift */,
 			);
@@ -130,21 +144,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58B511DA1A9E6C8500147676 /* RNPallyConDrmSdk */ = {
+		58B511DA1A9E6C8500147676 /* FairPlayReactNativeSdk */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNPallyConDrmSdk" */;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "FairPlayReactNativeSdk" */;
 			buildPhases = (
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
+				C15E644A2DAF3B6F00F5A313 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = RNPallyConDrmSdk;
+			name = FairPlayReactNativeSdk;
 			productName = RCTDataManager;
-			productReference = 134814201AA4EA6300B7C361 /* libRNPallyConDrmSdk.a */;
+			productReference = 134814201AA4EA6300B7C361 /* libFairPlayReactNativeSdk.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -162,7 +177,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNPallyConDrmSdk" */;
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "FairPlayReactNativeSdk" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -175,7 +190,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58B511DA1A9E6C8500147676 /* RNPallyConDrmSdk */,
+				58B511DA1A9E6C8500147676 /* FairPlayReactNativeSdk */,
 			);
 		};
 /* End PBXProject section */
@@ -185,15 +200,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B40ECC5E2980990000FB354E /* RNPallyConDrmSdk.swift in Sources */,
-				B4E0AAD929D2BEAA00FEC09F /* PallyConSdk.swift in Sources */,
-				B4E0AADE29D3BA2300FEC09F /* PallyConEvent.swift in Sources */,
+				B40ECC5E2980990000FB354E /* FairPlayReactNativeSdk.swift in Sources */,
+				B4E0AAD929D2BEAA00FEC09F /* FairPlaySdk.swift in Sources */,
+				B4E0AADE29D3BA2300FEC09F /* FairPlaySdkEvent.swift in Sources */,
 				B4F31F4C2987404B00A916D3 /* EventEmitter.swift in Sources */,
 				B4E0AAE229D3C18000FEC09F /* DownloadProgressEvent.swift in Sources */,
-				B4E0AAE029D3BAD000FEC09F /* PallyConEventImpl.swift in Sources */,
+				B4E0AAE029D3BAD000FEC09F /* FairPlaySdkEventImpl.swift in Sources */,
 				B4E0AAE429D3C18900FEC09F /* DownloadProgressEventImpl.swift in Sources */,
-				B4E0AAE629D3CAC900FEC09F /* PallyConEventType.swift in Sources */,
-				B3E7B58A1CC2AC0600A0062D /* RNPallyConDrmSdkBridge.m in Sources */,
+				B4E0AAE629D3CAC900FEC09F /* FairPlaySdkEventType.swift in Sources */,
+				B3E7B58A1CC2AC0600A0062D /* FairPlayReactNativeSdkBridge.m in Sources */,
 				B4E0AAE829D3CB2200FEC09F /* DownloadState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,18 +301,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../temp/2.5.0/lib\"";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNPallyConDrmSdk;
+				PRODUCT_NAME = FairPlayReactNativeSdk;
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "RNPallyConDrmSdk-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "FairPlayReactNativeSdk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -307,18 +328,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../temp/2.5.0/lib\"";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNPallyConDrmSdk;
+				PRODUCT_NAME = FairPlayReactNativeSdk;
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "RNPallyConDrmSdk-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "FairPlayReactNativeSdk-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -326,7 +353,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNPallyConDrmSdk" */ = {
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "FairPlayReactNativeSdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511ED1A9E6C8500147676 /* Debug */,
@@ -335,7 +362,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNPallyConDrmSdk" */ = {
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "FairPlayReactNativeSdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511F01A9E6C8500147676 /* Debug */,

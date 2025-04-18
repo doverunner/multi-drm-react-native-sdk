@@ -44,7 +44,8 @@ target 'advanced' do
   )
 
   # Add PallyConFPSSDK
-  pod 'PallyConFPSSDK'
+  # pod 'PallyConFPSSDK'
+  pod 'DOVERUNNERFairPlay', :path => '../../../../temp/2.5.0/lib'
 
   target 'advancedTests' do
     inherit! :complete
@@ -59,7 +60,7 @@ target 'advanced' do
       :mac_catalyst_enabled => false
 
       # Add this line to explicitly set the node path
-    `sed -i '' 's/\/opt\/homebrew\/bin\/node/#{ENV['HOME']}\/\.nvm\/versions\/node\/$(node -v)\/bin\/node/g' #{Dir.glob(File.join(installer.sandbox.target_support_files_root, "Pods-*/Script-*")).join(' ')}`
+    #`sed -i '' 's/\/opt\/homebrew\/bin\/node/#{ENV['HOME']}\/\.nvm\/versions\/node\/$(node -v)\/bin\/node/g' #{Dir.glob(File.join(installer.sandbox.target_support_files_root, "Pods-*/Script-*")).join(' ')}`
     )
   end
 end

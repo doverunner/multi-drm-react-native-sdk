@@ -15,12 +15,12 @@
     "@react-native-community/cli-platform-android": "^14.1.1",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
-    "pallycon-react-native-sdk": "file:../../pallycon-react-native-sdk-1.1.1.tgz",
+    "doverunner-react-native-sdk": "file:../../doverunner-multi-drm-react-native-sdk-1.1.1.tgz",
     "react": "18.2.0",
     "react-native": "^0.75.2",
     "react-native-svg": "^15.7.1",
     "react-native-svg-transformer": "^1.5.0",
-    "react-native-video": "git+https://github.com/inka-pallycon/react-native-video.git"
+    "react-native-video": "git+https://github.com/doverunner/react-native-video.git"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

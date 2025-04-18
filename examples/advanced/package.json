@@ -15,8 +15,9 @@
     "@react-native/metro-config": "^0.75.3",
     "@react-navigation/native": "^6.1.5",
     "@react-navigation/native-stack": "^6.9.11",
+    "__react-native-video": "git+https://github.com/doverunner/react-native-video.git",
+    "doverunner-react-native-sdk": "file:../../doverunner-react-native-sdk-1.1.3.tgz",
     "hermes-engine": "^0.11.0",
-    "pallycon-react-native-sdk": "file:../../pallycon-react-native-sdk.tgz",
     "react": "^18.2.0",
     "react-native": "^0.75.2",
     "react-native-base64": "^0.2.1",
@@ -27,7 +28,7 @@
     "react-native-svg-transformer": "^1.5.0",
     "react-native-toast-message": "^2.2.1",
     "react-native-vector-icons": "^10.2.0",
-    "react-native-video": "git+https://github.com/inka-pallycon/react-native-video.git",
+    "react-native-video": "../../../react-native-video",
     "tr46": "^5.0.0"
   },
   "devDependencies": {

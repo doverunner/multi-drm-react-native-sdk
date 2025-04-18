@@ -1,4 +1,4 @@
-export interface PallyConReceiveEvent {
+export interface MultiDrmReceiveEvent {
     /** The track url */
     url: string;
 }

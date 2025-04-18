@@ -1,21 +1,21 @@
 //
-//  RNPallyConDrmSdk.swift
-//  RNPallyConDrmSdk
+//  FairPlayReactNativeSdk.swift
+//  FairPlayReactNativeSdk
 //
 //  Created by sungju Yun on 2023/01/25.
-//  Copyright © 2023 Facebook. All rights reserved.
+//  Copyright © 2023 DOVERUNNER. All rights reserved.
 //
 
 import Foundation
 
-@objc(RNPallyConDrmSdk)
-public class RNPallyConDrmSdk: RCTEventEmitter {
-    private let defaultLicenseUrl = "https://license-global.pallycon.com/ri/licenseManager.do"
+@objc(FairPlayReactNativeSdk)
+public class FairPlayReactNativeSdk: RCTEventEmitter {
+    private let defaultLicenseUrl = "https://drm-license.doverunner.com/ri/licenseManager.do"
 
     override public init() {
         super.init()
-        PallyConSdk.shared.setPallyConEvent(pallyConEvent: PallyConEventImpl(emitter: self))
-        PallyConSdk.shared.setDownloadProgress(downloadProgressEvent: DownloadProgressEventImpl(emitter: self))
+        FairPlaySdk.shared.setFairPlaySdkEvent(event: FairPlaySdkEventImpl(emitter: self))
+        FairPlaySdk.shared.setDownloadProgress(downloadProgressEvent: DownloadProgressEventImpl(emitter: self))
     }
 
     @objc(supportedEvents)
@@ -25,19 +25,19 @@ public class RNPallyConDrmSdk: RCTEventEmitter {
 
     @objc(initialize:resolver:rejecter:)
     public func initialize(_ siteId: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        PallyConSdk.shared.initialize(siteId: siteId)
+        FairPlaySdk.shared.initialize(siteId: siteId)
         resolve(nil)
     }
 
     @objc(release:rejecter:)
     public func release(_ resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        PallyConSdk.shared.release()
+        FairPlaySdk.shared.release()
         resolve(nil)
     }
 
-    @objc(setPallyConEvents:rejecter:)
-    public func setPallyConEvents(_ resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        PallyConSdk.shared.setPallyConEvent(pallyConEvent: PallyConEventImpl(emitter: self))
+    @objc(setMultiDrmEvents:rejecter:)
+    public func setMultiDrmEvents(_ resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+        FairPlaySdk.shared.setFairPlaySdkEvent(event: FairPlaySdkEventImpl(emitter: self))
     }
 
     @objc(getObjectForContent:resolver:rejecter:)
@@ -58,7 +58,7 @@ public class RNPallyConDrmSdk: RCTEventEmitter {
         let licenseUrl = data["licenseUrl"] as? String ?? defaultLicenseUrl
         let appleCertUrl = data["certificateUrl"] as? String
 
-        let object = PallyConSdk.shared.getObjectForContent(
+        let object = FairPlaySdk.shared.getObjectForContent(
             url: url,
             contentId: contentId,
             token: token,
@@ -80,7 +80,7 @@ public class RNPallyConDrmSdk: RCTEventEmitter {
             return
         }
 
-        let state = PallyConSdk.shared.getDownloadState(url: url)
+        let state = FairPlaySdk.shared.getDownloadState(url: url)
         resolve(state)
     }
 
@@ -102,7 +102,7 @@ public class RNPallyConDrmSdk: RCTEventEmitter {
         let licenseUrl = data["licenseUrl"] as? String ?? defaultLicenseUrl
         let appleCertUrl = data["certificateUrl"] as? String
 
-        PallyConSdk.shared.addStartDownload(
+        FairPlaySdk.shared.addStartDownload(
                     url: url,
                     contentId: contentId,
                     token: token,
@@ -119,19 +119,19 @@ public class RNPallyConDrmSdk: RCTEventEmitter {
 
     @objc(resumeDownloads:rejecter:)
     public func resumeDownloads(_ resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        PallyConSdk.shared.resumeAll()
+        FairPlaySdk.shared.resumeAll()
         resolve(nil)
     }
 
     @objc(cancelDownloads:rejecter:)
     public func cancelDownloads(_ resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        PallyConSdk.shared.cancelAll()
+        FairPlaySdk.shared.cancelAll()
         resolve(nil)
     }
 
     @objc(pauseDownloads:rejecter:)
     public func pauseDownloads(_ resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        PallyConSdk.shared.pauseAll()
+        FairPlaySdk.shared.pauseAll()
         resolve(nil)
     }
 
@@ -142,7 +142,7 @@ public class RNPallyConDrmSdk: RCTEventEmitter {
             return
         }
 
-        PallyConSdk.shared.removeDownload(url: url)
+        FairPlaySdk.shared.removeDownload(url: url)
         resolve(nil)
     }
 
@@ -153,7 +153,7 @@ public class RNPallyConDrmSdk: RCTEventEmitter {
             return
         }
 
-        PallyConSdk.shared.removeLicense(url: url)
+        FairPlaySdk.shared.removeLicense(url: url)
         resolve(nil)
     }
 

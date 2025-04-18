@@ -62,7 +62,7 @@ export default function DrmMoviePage({ navigation }: any) {
   const didMount = useRef(false)
   const {
     sdkInit,
-    setPallyConEvents,
+    setMultiDrmEvents,
     getMovies,
     getPlayerData,
     downloadMovie,
@@ -139,13 +139,13 @@ export default function DrmMoviePage({ navigation }: any) {
       const asyncGetMovies = async () => {
         await getMovies()
       }
-      setPallyConEvents()
+      setMultiDrmEvents()
       asyncGetMovies()
       didMount.current = true
     }
 
     // if (movies.length > 0) {
-    //   setPallyConEvents()
+    //   setMultiDrmEvents()
     // }
 
     if (error && error.length > 0) {
@@ -162,7 +162,7 @@ export default function DrmMoviePage({ navigation }: any) {
     const isActive = navigation.isFocused() // 화면이 현재 활성화 중인지 확인
 
     // if (isActive) {
-    //   setPallyConEvents()
+    //   setMultiDrmEvents()
     // }
   })
 

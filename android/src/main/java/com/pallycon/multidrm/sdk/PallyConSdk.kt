@@ -154,7 +154,7 @@ class PallyConSdk constructor(val context: Context) {
         }
     }
 
-    fun setPallyConEvent(pallyConEvent: PallyConEvent?) {
+    fun setMultiDrmEvents(pallyConEvent: PallyConEvent?) {
         this.pallyConEvent = pallyConEvent
 //        if (wvSDKList.isNotEmpty()) {
 //            wvSDKList.entries.first()?.value.setPallyConEventListener(listener)

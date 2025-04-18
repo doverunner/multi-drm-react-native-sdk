@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface RNPallyConDrmSdkBridge: NSObject
+@interface FairPlayReactNativeSdkBridge: NSObject
 
 @end
   

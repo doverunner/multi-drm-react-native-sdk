@@ -1,5 +1,5 @@
-/// Event type of PallyCon SDK Event
-export enum PallyConEventType {
+/// Event type of multi-drm SDK Event
+export enum MultiDrmEventType {
     /// The download completed
     complete = 'complete',
     /// The download paused
@@ -11,7 +11,7 @@ export enum PallyConEventType {
     /// The download is start
     download = 'download',
     /// Error when the content information to be downloaded is incorrect
-    /// It mainly occurs when the value of the function parameter [PallyConContentConfiguration] is incorrect.
+    /// It mainly occurs when the value of the function parameter [DrmContentConfiguration] is incorrect.
     contentDataError = 'contentDataError',
     /// License error
     drmError = 'drmError',

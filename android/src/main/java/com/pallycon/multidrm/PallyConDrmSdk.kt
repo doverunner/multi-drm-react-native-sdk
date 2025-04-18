@@ -15,7 +15,7 @@ class PallyConDrmSdk(reactContext: ReactApplicationContext) :
     private val context = reactContext
     private var drmSdk: PallyConSdk? = null
     private val scope = MainScope()
-    private val licenseUrl = "https://license-global.pallycon.com/ri/licenseManager.do"
+    private val licenseUrl = "https://drm-license.doverunner.com/ri/licenseManager.do"
 
     override fun getName(): String {
         return "PallyConDrmSdkModule"
@@ -51,14 +51,14 @@ class PallyConDrmSdk(reactContext: ReactApplicationContext) :
     fun initialize(siteId: String) {
         print("initialize - $siteId")
         drmSdk = PallyConSdk.getInstance(context)
-        drmSdk?.setPallyConEvent(PallyConEventImpl(context))
+        drmSdk?.setMultiDrmEvents(PallyConEventImpl(context))
         drmSdk?.setDownloadProgressEvent(DownloadProgressEventImpl(context))
         drmSdk?.initialize(siteId)
     }
 
     @ReactMethod
-    fun setPallyConEvents() {
-        drmSdk?.setPallyConEvent(PallyConEventImpl(context))
+    fun setMultiDrmEvents() {
+        drmSdk?.setMultiDrmEvents(PallyConEventImpl(context))
     }
 
     @ReactMethod

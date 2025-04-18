@@ -1,8 +1,8 @@
 #import <React/RCTBridgeModule.h>
-//#import "RNPallyConDrmSdkBridge.h"
+//#import "FairPlayReactNativeSdkBridge.h"
 //#import <React/RCTBridgeModule.h>
 
-@interface RCT_EXTERN_REMAP_MODULE(PallyConDrmSdkModule, RNPallyConDrmSdk, NSObject)
+@interface RCT_EXTERN_REMAP_MODULE(NativeMultiDrmSdkModule, FairPlayReactNativeSdk, NSObject)
 
 RCT_EXTERN_METHOD(initialize:(NSString *)siteId
                   resolver:(RCTPromiseResolveBlock)resolve
@@ -11,7 +11,7 @@ RCT_EXTERN_METHOD(initialize:(NSString *)siteId
 RCT_EXTERN_METHOD(release:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject);
 
-RCT_EXTERN_METHOD(setPallyConEvents:(RCTPromiseResolveBlock)resolve
+RCT_EXTERN_METHOD(setMultiDrmEvents:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject);
 
 RCT_EXTERN_METHOD(getObjectForContent:(NSDictionary *)data
