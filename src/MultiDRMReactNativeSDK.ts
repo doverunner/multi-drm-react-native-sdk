@@ -5,7 +5,7 @@ import base64 from "react-native-base64";
 import {ContentDownloadState} from "./models";
 
 /*
-PallyCon SDK for using Multi-DRM React Native.
+SDK for using Multi-DRM React Native.
  */
 const { NativeMultiDrmSdkModule: ReactMultiDrmSdk } = NativeModules;
 const emitter =
@@ -16,7 +16,7 @@ const emitter =
 /**
  * Initializes the MultiDrmSdk.
  *
- * @param siteId issued by the PallyCon.
+ * @param siteId issued by the DOVERUNNER.
  */
 export function initialize(siteId: String) {
     return ReactMultiDrmSdk.initialize(siteId);
@@ -31,7 +31,7 @@ export function release() {
 }
 
 /**
- * set PallyCon Event
+ * set Multi-DRM Event
  */
 export function setMultiDrmEvents() {
     ReactMultiDrmSdk.setMultiDrmEvents();
@@ -87,7 +87,7 @@ export async function getDownloadState(config: DrmContentConfiguration): Promise
  * @returns EmitterSubscription represents a subscription with listener and context data.
  * @see EmitterSubscription
  */
-export function addPallyConEvent<T extends MultiDrmEventType>(
+export function addMultiDrmEvent<T extends MultiDrmEventType>(
     eventType: T,
     listener: MultiDrmEvent[T] extends never
         ? () => void

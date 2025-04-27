@@ -142,8 +142,11 @@ class FairPlaySdk: NSObject {
             sdkEvent?.sendFairPlaySdkEvent(url, eventType: FairPlaySdkEventType.downloadError, message: "String to URL convert Error!", errorCode: "")
             return
         }
-
-        guard let downloadTask = fpsSdk?.createDownloadTask(url: contentUrl, contentId: contentId, token: token!, isAVAssetDownloadTask: true, downloadDelegate: self) else {
+        
+        let aseet = AVURLAsset(url: contentUrl)
+        let config = FairPlayConfiguration(avURLAsset: aseet, contentId: contentId, certificateUrl: appleCertUrl!, authData: token, delegate: self )
+        
+        guard let downloadTask = fpsSdk?.createDownloadTask(drm: config, delegate: self) else {
             sdkEvent?.sendFairPlaySdkEvent(url, eventType: FairPlaySdkEventType.downloadError, message: "DownloadTask not Create! ", errorCode: "")
             return
         }
@@ -361,8 +364,64 @@ extension FairPlaySdk: FairPlayLicenseDelegate {
         } else {
             print("Error: \(error). Unkown")
         }
-
+        
         sdkEvent?.sendFairPlaySdkEvent(contentId, eventType: eventType, message: errorMessage, errorCode: "")
+    }
+    
+    func license(result: LicenseResult) {
+        print("License Result : \(result)")
+        
+        var message: String = "Success"
+        var event: FairPlaySdkEventType = .complete
+        var eCode: Int = -1
+        if result.isSuccess == false {
+             print("Error : \(String(describing: result.error?.localizedDescription))")
+             if let error = result.error {
+                  switch error {
+                  case .database(comment: let comment):
+                       print(comment)
+                       message = comment
+                      event = .drmError
+                  case .server(errorCode: let errorCode, comment: let comment):
+                       print("code : \(errorCode), comment: \(comment)")
+                       message = "code : \(errorCode), comment: \(comment)"
+                      event = .licenseServerError
+                      eCode = errorCode
+                  case .network(errorCode: let errorCode, comment: let comment):
+                       print("code : \(errorCode), comment: \(comment)")
+                       message = "code : \(errorCode), comment: \(comment)"
+                      event = .networkConnectedError
+                      eCode = errorCode
+                  case .system(errorCode: let errorCode, comment: let comment):
+                       print("code : \(errorCode), comment: \(comment)")
+                       message = "code : \(errorCode), comment: \(comment)"
+                      event = .licenseServerError
+                      eCode = errorCode
+                  case .failed(errorCode: let errorCode, comment: let comment):
+                       print("code : \(errorCode), comment: \(comment)")
+                       message = "code : \(errorCode), comment: \(comment)"
+                      event = .drmError
+                      eCode = errorCode
+                  case .unknown(errorCode: let errorCode, comment: let comment):
+                       print("code : \(errorCode), comment: \(comment)")
+                       message = "code : \(errorCode), comment: \(comment)"
+                      event = .unknownError
+                      eCode = errorCode
+                  case .invalid(comment: let comment):
+                       print("comment: \(comment)")
+                       message = "comment: \(comment)"
+                      event = .drmError
+                  default:
+                       print("comment: \(error)")
+                       message = "comment: \(error)"
+                      event = .unknownError
+                      break
+                  }
+                 sdkEvent?.sendFairPlaySdkEvent(result.contentId, eventType: event, message: message, errorCode: "\(eCode)")
+             }
+        } else {
+            sdkEvent?.sendFairPlaySdkEvent(result.contentId, eventType: FairPlaySdkEventType.licenseServerError, message: message, errorCode: "0")
+        }
     }
 }
 

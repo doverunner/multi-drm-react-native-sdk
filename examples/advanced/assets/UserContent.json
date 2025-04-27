@@ -1,22 +1,22 @@
 {
   "data": [
     {
-      "url": "https://contents.pallycon.com/DEMO/app/big_buck_bunny/dash/stream.mpd",
+      "url": "https://drm-contents.doverunner.com/DEMO/app/big_buck_bunny/dash/stream.mpd",
       "content_id": "demo-bbb-simple",
       "title": "demo-bbb-simple_3000",
       "token": "eyJrZXlfcm90YXRpb24iOmZhbHNlLCJyZXNwb25zZV9mb3JtYXQiOiJvcmlnaW5hbCIsInVzZXJfaWQiOiJ0ZXN0VXNlciIsImRybV90eXBlIjoid2lkZXZpbmUiLCJzaXRlX2lkIjoiREVNTyIsImhhc2giOiJOZ2lQRzVwVnVyempcL0J4T09OdU9KdGZwNVNyOHpxVDJTNnhuTmlMY0JxQT0iLCJjaWQiOiJkZW1vLWJiYi1zaW1wbGUiLCJwb2xpY3kiOiI5V3FJV2tkaHB4VkdLOFBTSVljbkpzY3Z1QTlzeGd1YkxzZCthanVcL2JvbVFaUGJxSSt4YWVZZlFvY2NrdnVFZkFhcWRXNWhYZ0pOZ2NTUzNmUzdvOEVtSHVwc05kblZNdEM0QUdEdUlHZzhpcThIRENjdmR2b21aVFJ3SFhCa29CQ09KSkRPVGdtR3IydWJYbVdFV1J0VkpBcVV1YkxSREt5SVJTRzVhcCtJMUFFb1NHXC9mejdTZUVPYXA5aW9QWVpuUTlPRHNuT3JLb0Q4aUhMcndRTXdlangxc0ZqVDlYWVhZMDRxMlhiQmtlNDhvOXBvMk1JdWNjekpEYXhyQk8iLCJ0aW1lc3RhbXAiOiIyMDIzLTA0LTI1VDAzOjEzOjM5WiJ9",
-      "licenseUrl": "https://license-global.pallycon.com/ri/licenseManager.do",
+      "licenseUrl": "https://drm-license.doverunner.com/ri/licenseManager.do",
       "licenseCipherTablePath":"",
       "certificateUrl":""
     },
     {
-      "url": "https://contents.pallycon.com/DEMO/app/big_buck_bunny/hls/master.m3u8",
+      "url": "https://drm-contents.doverunner.com/DEMO/app/big_buck_bunny/hls/master.m3u8",
       "content_id": "demo-bbb-simple",
       "title": "demo-bbb-simple_3000",
       "token": "eyJrZXlfcm90YXRpb24iOmZhbHNlLCJyZXNwb25zZV9mb3JtYXQiOiJvcmlnaW5hbCIsInVzZXJfaWQiOiJ0ZXN0VXNlciIsImRybV90eXBlIjoiZmFpcnBsYXkiLCJzaXRlX2lkIjoiREVNTyIsImhhc2giOiJKbnJWbFdiRzNRelpBZ21cL2x0RkY2ajhWdml5MnpDZm0ya3BjRHVrMlRrMD0iLCJjaWQiOiJkZW1vLWJiYi1zaW1wbGUiLCJwb2xpY3kiOiI5V3FJV2tkaHB4VkdLOFBTSVljbkpzY3Z1QTlzeGd1YkxzZCthanVcL2JvbVFaUGJxSSt4YWVZZlFvY2NrdnVFZkFhcWRXNWhYZ0pOZ2NTUzNmUzdvOEVtSHVwc05kblZNdEM0QUdEdUlHZzhpcThIRENjdmR2b21aVFJ3SFhCa29CQ09KSkRPVGdtR3IydWJYbVdFV1J0VkpBcVV1YkxSREt5SVJTRzVhcCtJMUFFb1NHXC9mejdTZUVPYXA5aW9QWVpuUTlPRHNuT3JLb0Q4aUhMcndRTXdlangxc0ZqVDlYWVhZMDRxMlhiQmtlNDhvOXBvMk1JdWNjekpEYXhyQk8iLCJ0aW1lc3RhbXAiOiIyMDIzLTA0LTI1VDAzOjEzOjA4WiJ9",
-      "licenseUrl": "https://license-global.pallycon.com/ri/licenseManager.do",
+      "licenseUrl": "https://drm-license.doverunner.com/ri/licenseManager.do",
       "licenseCipherTablePath":"",
-      "certificateUrl":"https://license-global.pallycon.com/ri/fpsKeyManager.do?siteId=DEMO"
+      "certificateUrl":"https://drm-license.doverunner.com/ri/fpsKeyManager.do?siteId=DEMO"
     }
   ]
 }

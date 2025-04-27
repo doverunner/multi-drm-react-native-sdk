@@ -5,7 +5,7 @@ export class DrmMovieModel implements DrmMovie {
     contentId = '';
     title = '';
     token = '';
-    licenseUrl = 'https://license-global.pallycon.com/ri/licenseManager.do/';
+    licenseUrl = 'https://drm-license.doverunner.com/ri/licenseManager.do/';
     licenseCipherTablePath = '';
     certificateUrl = '';
     downloadState = '';

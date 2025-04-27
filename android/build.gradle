@@ -74,7 +74,7 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    // PallyCon Sdk
+    // Widevine Sdk
     implementation "com.pallycon:widevine:$pallycon_version"
 
     implementation "androidx.databinding:databinding-runtime:$data_binding_version"

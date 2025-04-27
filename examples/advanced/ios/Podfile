@@ -1,7 +1,6 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
-require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-platform :ios, '14.0'
+platform :ios, '15.1'
 prepare_react_native_project!
 
 # If you are using a `react-native-flipper` your iOS build will fail when `NO_FLIPPER=1` is set.
@@ -29,16 +28,9 @@ target 'advanced' do
 
   use_react_native!(
     :path => config[:reactNativePath],
-    # Hermes is now enabled by default. Disable by setting this flag to false.
-    # Upcoming versions of React Native may rely on get_default_flags(), but
-    # we make it explicit here to aid in the React Native upgrade process.
+    # to enable hermes on iOS, change `false` to `true` and then install pods
     :hermes_enabled => flags[:hermes_enabled],
     :fabric_enabled => flags[:fabric_enabled],
-    # Enables Flipper.
-    #
-    # Note that if you have use_frameworks! enabled, Flipper will not work and
-    # you should disable the next line.
-    # :flipper_configuration => flipper_config,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
@@ -58,9 +50,6 @@ target 'advanced' do
       # Set `mac_catalyst_enabled` to `true` in order to apply patches
       # necessary for Mac Catalyst builds
       :mac_catalyst_enabled => false
-
-      # Add this line to explicitly set the node path
-    #`sed -i '' 's/\/opt\/homebrew\/bin\/node/#{ENV['HOME']}\/\.nvm\/versions\/node\/$(node -v)\/bin\/node/g' #{Dir.glob(File.join(installer.sandbox.target_support_files_root, "Pods-*/Script-*")).join(' ')}`
     )
   end
 end

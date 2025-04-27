@@ -20,22 +20,22 @@ const App = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                // PallyCon sdk use
-                // Initialize PallyCon Sdk with ‘DEMO’ site ID
+                // Multi-DRM React Native sdk use
+                // Initialize SDK with ‘DEMO’ site ID
                 ReactMultiDrmSdk.initialize('DEMO');
 
                 let config: DrmContentConfiguration;
                 if (Platform.OS === 'android') {
                     // android
                     config = {
-                        contentUrl: 'https://contents.pallycon.com/DEV/sglee/multitracks/dash/stream.mpd',
+                        contentUrl: 'https://drm-contents.doverunner.com/DEV/sglee/multitracks/dash/stream.mpd',
                         contentId: 'multitracks',
                         token: 'eyJrZXlfcm90YXRpb24iOmZhbHNlLCJyZXNwb25zZV9mb3JtYXQiOiJvcmlnaW5hbCIsInVzZXJfaWQiOiJ0ZXN0VXNlciIsImRybV90eXBlIjoid2lkZXZpbmUiLCJzaXRlX2lkIjoiREVNTyIsImhhc2giOiJpSGlpQmM3U1QrWTR1T0h1VnVPQVNmNU1nTDVibDJMb1FuNzNHREtcLzltbz0iLCJjaWQiOiJtdWx0aXRyYWNrcyIsInBvbGljeSI6IjlXcUlXa2RocHhWR0s4UFNJWWNuSnNjdnVBOXN4Z3ViTHNkK2FqdVwvYm9tUVpQYnFJK3hhZVlmUW9jY2t2dUVmQWFxZFc1aFhnSk5nY1NTM2ZTN284TnNqd3N6ak11dnQrMFF6TGtaVlZObXgwa2VmT2Uyd0NzMlRJVGdkVTRCdk45YWJoZDByUWtNSXJtb0llb0pIcUllSGNSdlZmNlQxNFJtVEFERXBDWTQ2NHdxamNzWjA0Uk82Zm90Nm5yZjhXSGZ3QVNjek9kV1d6QStFRlRadDhRTWw5SFRueWVYK1g3YXp1Y2VmQjJBd2V0XC9hQm0rZXpmUERodFZuaUhsSiIsInRpbWVzdGFtcCI6IjIwMjItMDgtMDVUMDY6MDM6MjJaIn0='
                     };
                 } else {
                     // iOS
                     config = {
-                        contentUrl: 'https://contents.pallycon.com/DEV/sglee/multitracks/hls/master.m3u8',
+                        contentUrl: 'https://drm-contents.doverunner.com/DEV/sglee/multitracks/hls/master.m3u8',
                         contentId: 'multitracks',
                         token: 'eyJrZXlfcm90YXRpb24iOmZhbHNlLCJyZXNwb25zZV9mb3JtYXQiOiJvcmlnaW5hbCIsInVzZXJfaWQiOiJ0ZXN0VXNlciIsImRybV90eXBlIjoiZmFpcnBsYXkiLCJzaXRlX2lkIjoiREVNTyIsImhhc2giOiJqRFhUbHo1WCthVDFmWjQ5RTBBZHh3bEVtVVhkUGZcL3dsSURuVVlaVFdNUT0iLCJjaWQiOiJtdWx0aXRyYWNrcyIsInBvbGljeSI6IjlXcUlXa2RocHhWR0s4UFNJWWNuSnNjdnVBOXN4Z3ViTHNkK2FqdVwvYm9tUVpQYnFJK3hhZVlmUW9jY2t2dUVmQWFxZFc1aFhnSk5nY1NTM2ZTN284TnNqd3N6ak11dnQrMFF6TGtaVlZObXgwa2VmT2Uyd0NzMlRJVGdkVTRCdk45YWJoZDByUWtNSXJtb0llb0pIcUllSGNSdlZmNlQxNFJtVEFERXBDWTdQSGZQZlwvVkZZXC9WYlh1eFhcL1dUdFZhczRPVXBDRGQ1bTFzcFRYbThEXC9NSEZwaWJ5ZlpwRExGcEd4UCs2RHg5OEpJeG1OYXBaZFpGaVNNcHdpWllFMiIsInRpbWVzdGFtcCI6IjIwMjMtMDEtMDVUMDU6MDE6NDJaIn0='
                     };

@@ -15,9 +15,9 @@
     "@react-native-community/cli-platform-android": "^14.1.1",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
-    "doverunner-react-native-sdk": "file:../../doverunner-multi-drm-react-native-sdk-1.1.1.tgz",
+    "doverunner-react-native-sdk": "file:../../doverunner-multi-drm-react-native-sdk-1.1.3.tgz",
     "react": "18.2.0",
-    "react-native": "^0.75.2",
+    "react-native": "^0.76.9",
     "react-native-svg": "^15.7.1",
     "react-native-svg-transformer": "^1.5.0",
     "react-native-video": "git+https://github.com/doverunner/react-native-video.git"

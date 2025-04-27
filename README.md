@@ -1,6 +1,6 @@
-# **PallyCon React Native SDK** Development Guide
+# **Multi DRM React Native SDK** Development Guide
 
-- A React-Native pallycon-react-native-sdk plugin which provides easy to apply Multi-DRM(Android: Widevine, iOS: FairPlay) when developing media service apps for Android and iOS. 
+- A React-Native doverunner-react-native-sdk plugin which provides easy to apply Multi-DRM(Android: Widevine, iOS: FairPlay) when developing media service apps for Android and iOS. 
 - Please refer to the links below for detailed information.
 
 ## **Support Environment**
@@ -10,28 +10,28 @@
 
 ## **Important**
 
-- To develop using the SDK, you must first sign up for the [PallyCon Site][1] and obtain a `Site ID`.
+- To develop using the SDK, you must first sign up for the [DOVERUNNER Site][1] and obtain a `Site ID`.
 
 ## **Dependencies**
 
-- PallyCon React Native SDK uses `PallyCon Multi-DRM SDK` and `react-native-video`.
-  - To add `PallyCon Multi-DRM Sdk` to your React-Native app, read the [Installation][2] instructions.
+- Multi DRM React Native SDK uses `DOVERUNNER Multi-DRM SDK` and `react-native-video`.
+  - To add `DOVERUNNER Multi-DRM Sdk` to your React-Native app, read the [Installation][2] instructions.
   - To add `react-native-video` to your React-Native app, read the [React Native Video](#react-native-video) instructions.
 
-- `pallycon-react-native-sdk` and `react-native-video` must be added to `package.json`.
+- `doverunner-react-native-sdk` and `react-native-video` must be added to `package.json`.
   > The example already includes the information below.
 
   ```json
   "dependencies": {
-    "pallycon-react-native-sdk": "^1.1.2",
+    "doverunner-react-native-sdk": "^1.1.2",
     "react-native-video": "git+https://github.com/doverunner/react-native-video.git"
   }
   ``` 
 
-### Set PallyCon Multi-DRM SDK - Android, iOS
+### Set Native Multi-DRM SDK - Android, iOS
 
-- The `pallycon-react-native-sdk` uses the [PallyCon Multi-DRM SDK][3].
-- This `PallyCon Multi-DRM SDK` is used to acquire and manage licences. 
+- The `doverunner-react-native-sdk` uses the [DOVERUNNER Multi-DRM SDK][3].
+- This `DOVERUNNER Multi-DRM SDK` is used to acquire and manage licences. 
 - SDK is applied to Android and iOS platforms, and the settings and usage methods for each platform are as follows.
 
 #### **Android**
@@ -40,7 +40,7 @@
   - To integrate the Widevine Android SDK, follow these steps to add the GitHub package repository to your `build.gradle` file:
 
 - Update your `build.gradle` file
-    - Add the following code snippet to the `allprojects` section of your `build.gradle` file to include the PallyCon Widevine Android SDK GitHub repository:
+    - Add the following code snippet to the `allprojects` section of your `build.gradle` file to include the Widevine Android SDK GitHub repository:
 
       ```groovy
       allprojects {
@@ -70,7 +70,7 @@
 
 #### **iOS**
 
-- `pallycon-react-native-sdk` uses cocoapods to install `PallyCon Multi-DRM iOS SDK`.
+- `doverunner-react-native-sdk` uses cocoapods to install `DOVERUNNER Multi-DRM iOS SDK`.
 
   > For information on how to install and use cocoapods, please refer to the [cocoapods official website][5].
 
@@ -78,17 +78,17 @@
 
     ```pod
     # examples/advanced/ios/Podfile
-    pod 'PallyConFPSSDK'
+    pod 'DOVERUNNERFairPlay'
     ```
 
 
 ### Set React Native Video
 
-- The example project in `pallycon-react-native-sdk` uses [react-native-video][6] to play DRM content.
+- The example project in `doverunner-react-native-sdk` uses [react-native-video][6] to play DRM content.
 - `react-native-video` is a library that provides a video component for React Native.
   - `react-native-video` is a fork of [react-native-video][7].
-  - forked from `react-native-video` to apply `PallyCon Multi-DRM SDK`.
-- The provided `react-native-video` is applied with `PallyCon Multi-DRM SDK`, and if you use `pallycon-react-native-sdk`, you need to configure it like below.
+  - forked from `react-native-video` to apply `DOVERUNNER Multi-DRM SDK`.
+- The provided `react-native-video` is applied with `DOVERUNNER Multi-DRM SDK`, and if you use `doverunner-react-native-sdk`, you need to configure it like below.
 
   ```json
   "_comment": "path : examples/advanced/package.json or examples/basic/package.json",
@@ -99,9 +99,9 @@
   ```
 
 
-## **PallyCon React Native SDK Example**
+## **React Native SDK Example**
 ### **Overview**
-- `pallycon-react-native-sdk` provides two examples.
+- `doverunner-react-native-sdk` provides two examples.
   - advanced example
     - DRM content streaming playback
     - DRM content download and offline playback
@@ -109,12 +109,12 @@
     - DRM content streaming playback
 
 
-### How to Run PallyCon React Native SDK Example
+### How to Run React Native SDK Example
   - Run the following command to execute the example.
 
     ```bsh
-    // move to the pallycon-react-native-sdk folder
-    % cd pallycon-react-native-sdk
+    // move to the doverunner-react-native-sdk folder
+    % cd doverunner-react-native-sdk
     % yarn install
     % yarn pack -o pallycon-react-native-sdk.tgz
 
@@ -135,42 +135,42 @@
     // % cd ios && open advanced.xcworkspace
     ```
 
-## PallyCon React Native SDK API
+## React Native SDK API
 
-This section describes the `PallyCon React Native SDK` API.
+This section describes the `Multi DRM React Native SDK` API.
 
 ### **Import**
 
-- Import the `PallyCon React Native SDK` module.
+- Import the `Multi-DRM React Native SDK` module.
 
   ```typescript
-  import PallyConMultiDrmSdk, {
-    PallyConEventType,
+  import MultiDRMReactNativeSDK, {
+    MultiDrmEventType,
     DrmContentConfiguration,
     ContentDownloadState,
-  } from "pallycon-react-native-sdk"
+  } from "doverunner-react-native-sdk"
   ```
 
 ### **Initialize**
-- Initialize the `PallyCon React Native SDK`.
+- Initialize the `Multi DRM React Native SDK`.
 
   ```typescript
   // ex) advanced/src/presentation/controllers/DrmMovieController.ts
-  PallyConMultiDrmSdk.initialize(siteId)
+  MultiDRMReactNativeSDK.initialize(siteId)
   ```
 
-### **PallyCon Event**
+### **React Native Multi Drm  Event**
 
 - Register events that occur inside the SDK.
   ```typescript
   // ex) advanced/src/presentation/controllers/DrmMovieController.ts
-  PallyConMultiDrmSdk.setPallyConEvents()
+  MultiDRMReactNativeSDK.setMultiDrmEvents()
   ```
 
-- PallyCon Event Type
+- Multi Drm Event Type
   ```typescript
   // ex) advanced/src/presentation/controllers/DrmMovieController.ts
-  export enum PallyConEventType {
+  export enum MultiDrmEventType {
       complete = 'complete',    /// The download completed
       pause = 'pause',          /// The download paused
       remove = 'remove',        /// The download is removed
@@ -198,7 +198,7 @@ This section describes the `PallyCon React Native SDK` API.
 
   ```typescript
   // ex) advanced/src/presentation/controllers/DrmMovieController.ts
-  PallyConMultiDrmSdk.addPallyConEvent(PallyConEventType.progress, (event) => {
+  MultiDRMReactNativeSDK.addMultiDrmEvent(MultiDrmEventType.progress, (event) => {
     // event.url is url
     // event.percent is downloaded percent
   })
@@ -208,7 +208,7 @@ This section describes the `PallyCon React Native SDK` API.
   ```typescript
   // ex) advanced/src/presentation/controllers/DrmMovieController.ts
   try {
-    const state = await PallyConMultiDrmSdk.getDownloadState(config)
+    const state = await MultiDRMReactNativeSDK.getDownloadState(config)
     switch (state) {
       case ContentDownloadState.DOWNLOADING:
         break
@@ -231,16 +231,16 @@ This section describes the `PallyCon React Native SDK` API.
   ```typescript
   // ex) advanced/src/presentation/controllers/DrmMovieController.ts
   // start download
-  PallyConMultiDrmSdk.addStartDownload(DrmContentConfiguration)
+  MultiDRMReactNativeSDK.addStartDownload(DrmContentConfiguration)
 
   // cancel downloads
-  PallyConMultiDrmSdk.cancelDownloads()
+  MultiDRMReactNativeSDK.cancelDownloads()
 
   // pause downloads
-  PallyConMultiDrmSdk.pauseDownloads()
+  MultiDRMReactNativeSDK.pauseDownloads()
 
   // resume downloads
-  PallyConMultiDrmSdk.resumeDownloads()
+  MultiDRMReactNativeSDK.resumeDownloads()
   ```
 
 ### **Remove License or Contents**
@@ -250,10 +250,10 @@ This section describes the `PallyCon React Native SDK` API.
   ```typescript
   // ex) advanced/src/presentation/controllers/DrmMovieController.ts
   // remove downloaded content
-  PallyConMultiDrmSdk.removeDownload(DrmContentConfiguration)
+  MultiDRMReactNativeSDK.removeDownload(DrmContentConfiguration)
 
   // remove license for content
-  PallyConMultiDrmSdk.removeLicense(DrmContentConfiguration)
+  MultiDRMReactNativeSDK.removeLicense(DrmContentConfiguration)
   ```
 
 ### **Release**
@@ -261,15 +261,15 @@ This section describes the `PallyCon React Native SDK` API.
 - Called when you end using the SDK.
 
   ```typescript
-    PallyConMultiDrmSdk.release()
+    MultiDRMReactNativeSDK.release()
   ```
 
 
-[1]: https://pallycon.com/
+[1]: https://doverunner.com/
 [2]: https://yarnpkg.com/
-[3]: https://pallycon.com/sdk/
+[3]: https://doverunner.com/sdk/
 [4]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
 [5]: https://cocoapods.org/
-[6]: https://github.com/inka-pallycon/react-native-video.git
+[6]: https://github.com/doverunner/react-native-video.git
 [7]: https://github.com/TheWidlarzGroup/react-native-video
 

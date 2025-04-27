@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,swift}"
   s.dependency "React-Core"
   s.dependency 'PallyConFPSSDK', '>=2.3.0'
-  s.platforms = { :ios => '14.0' }
+  s.platforms = { :ios => '15.1' }
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 x86_64' }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 x86_64' }
 end
