@@ -1,3 +1,11 @@
+## 1.2.0
+
+Features:
+
+- Renamed from PallyConMultiDrmSDK to MultiDRMReactNativeSDK 1.2.0
+  - Update react-native version.
+  - Doverunner Multi-DRM iOS/Android SDK update.
+  - Update advenced, basic sample.
 
 ## 1.1.2
 
@@ -6,7 +14,6 @@ Features:
 - PallyConMultiDrmSDK has been updated to version 1.1.2
   - react-native version update.
   - PallyCon Multi-DRM iOS/Android SDK update.
-
 
 ## 1.1.1
 
