@@ -1,26 +1,22 @@
-// import org.apache.tools.ant.taskdefs.condition.Os
-
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     ext {
-        buildToolsVersion = "34.0.0"
-        minSdkVersion = 23
-        compileSdkVersion = 34
-        targetSdkVersion = 34
-        kotlinVersion = '1.9.22'
-
-        ndkVersion = "26.1.10909125"
-        // if (System.properties['os.arch'] == "aarch64") {
-        //     // For M1 Users we need to use the NDK 24 which added support for aarch64
-        //     ndkVersion = "24.0.8215888"
-        // } else {
-        //     // Otherwise we default to the side-by-side NDK version from AGP.
-        //     ndkVersion = "21.4.7075529"
-        // }
+        buildToolsVersion = "35.0.0"
+        minSdkVersion = 24
+        compileSdkVersion = 35
+        targetSdkVersion = 35
+        ndkVersion = "27.1.12297006"
+        kotlinVersion = "2.0.21"
     }
     repositories {
         mavenLocal()
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/doverunner/widevine-android-sdk")
+            credentials {
+                username = "Git Hub User ID"
+                password = "Token"
+            }
+        }
         google()
         mavenCentral()
     }
@@ -33,19 +29,11 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenLocal()
+        mavenLocal() 
         google()
         mavenCentral()
-        flatDir {
-            dirs 'libs'
-        }
     }
 }
 
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        if (details.requested.group == 'org.jetbrains.kotlin') {
-            details.useVersion "1.9.0"
-        }
-    }
-}
+apply plugin: "com.facebook.react.rootproject"
+

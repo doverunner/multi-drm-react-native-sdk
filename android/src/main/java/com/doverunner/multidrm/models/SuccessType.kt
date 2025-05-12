@@ -1,4 +1,4 @@
-package com.pallycon.multidrm.models
+package com.doverunner.multidrm.models
 
 enum class SuccessType(type: String) {
     DownloadComplete("A001"),

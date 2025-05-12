@@ -1,20 +1,20 @@
 buildscript {
     ext.gradle_version = '8.5.2'
-    ext.kotlin_version = '1.9.23'
-    ext.media3_version = '1.4.1'
+    ext.kotlin_version = '2.1.10'
+    ext.media3_version = '1.5.1'
     ext.core_ktx_version = '1.13.1'
     ext.coroutines_version = '1.8.1'
     ext.gson_version = '2.11.0'
     ext.crypto_ktx_verion = '1.1.0-alpha06'
-    ext.pallycon_version = '4.3.2'
+    ext.doverunner_version = '4.4.0'
     ext.data_binding_version = '3.5.0'
-    ext.compile_sdk_version = 34
+    ext.compile_sdk_version = 35
     ext.min_sdk_version = 21
-    ext.target_sdk_version = 34
+    ext.target_sdk_version = 35
 
     repositories {
-        google()
         mavenLocal()
+        google()
         mavenCentral()
     }
 
@@ -43,8 +43,8 @@ android {
 }
 
 repositories {
-    google()
     mavenLocal()
+    google()
     maven {
         // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
         url("$rootDir/../node_modules/react-native/android")
@@ -60,8 +60,8 @@ repositories {
 
 allprojects {
     repositories {
-        google()
         mavenLocal()
+        google()
         mavenCentral()
         flatDir {
             dirs 'libs'
@@ -75,7 +75,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Widevine Sdk
-    implementation "com.pallycon:widevine:$pallycon_version"
+    implementation "com.doverunner:widevine:$doverunner_version"
 
     implementation "androidx.databinding:databinding-runtime:$data_binding_version"
     implementation "androidx.core:core-ktx:$core_ktx_version"

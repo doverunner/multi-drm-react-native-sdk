@@ -1,7 +1,7 @@
 import android.content.Context
 import android.os.Bundle
 
-class PallyConContentConfiguration(
+class DrContentConfiguration(
     context: Context, bundle: Bundle
 ) {
     var contentUrl: String? = null

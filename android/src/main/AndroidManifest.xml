@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.pallycon.multidrm">
+          package="com.doverunner.multidrm">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -9,7 +9,7 @@
 
     <application>
         <service
-                android:name="com.pallycon.widevine.service.PallyConDownloadService"
+                android:name="com.doverunner.widevine.service.PallyConDownloadService"
                 android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.exoplayer.downloadService.action.RESTART" />

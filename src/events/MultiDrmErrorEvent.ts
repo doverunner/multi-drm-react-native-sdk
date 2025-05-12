@@ -1,8 +1,10 @@
 export interface MultiDrmErrorEvent {
-    /** The track url */
-    url: string | null;
-    /** error code */
-    errorCode: string | null;
-    /** error message */
-    message: string | null;
+  /** The content ID */
+  contendId: string | null;
+  /** The track url */
+  url: string | null;
+  /** error code */
+  errorCode: string | null;
+  /** error message */
+  message: string | null;
 }

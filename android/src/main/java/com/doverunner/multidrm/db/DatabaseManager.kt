@@ -1,4 +1,4 @@
-package com.pallycon.multidrm.db
+package com.doverunner.multidrm.db
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -6,8 +6,7 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.pallycon.widevine.model.ContentData
-import com.pallycon.widevine.sdk.PallyConWvSDK
+import com.doverunner.widevine.model.ContentData
 
 class DatabaseManager {
     private fun getMasterKey(): MasterKey {

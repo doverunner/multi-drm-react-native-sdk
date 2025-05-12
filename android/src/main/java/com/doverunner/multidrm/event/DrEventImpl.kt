@@ -1,19 +1,33 @@
-package com.pallycon.multidrm.event
+package com.doverunner.multidrm.event
 
 import android.os.Looper
-import com.pallycon.multidrm.models.EventMessage
-import com.pallycon.multidrm.models.EventType
+import com.doverunner.multidrm.models.EventMessage
+import com.doverunner.multidrm.models.EventType
+import com.doverunner.widevine.model.ContentData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter
 
-class PallyConEventImpl(private val reactContext: ReactContext
-): PallyConEvent {
-    override fun sendPallyConEvent(
-        url: String,
+class DrEventImpl(private val reactContext: ReactContext
+): DrEvent {
+    override fun sendDrEvent(
+        contentData: ContentData,
+        eventType: EventType,
+        message: String,
+        errorCode: String
+    ) {
+        sendDrEvent(contentData.contentId ?: "",
+            contentData.url ?: "",
+            eventType,
+            message,
+            errorCode)
+    }
+
+    override fun sendDrEvent(
+        contentId: String?,
+        url: String?,
         eventType: EventType,
         message: String,
         errorCode: String
@@ -23,7 +37,8 @@ class PallyConEventImpl(private val reactContext: ReactContext
                 eventType.toString(),
                 EventMessage(
                     eventType,
-                    url,
+                    contentId ?: "",
+                    url ?: "",
                     message,
                     errorCode
                 ).toReactMap()
@@ -34,7 +49,8 @@ class PallyConEventImpl(private val reactContext: ReactContext
                     eventType.toString(),
                     EventMessage(
                         eventType,
-                        url,
+                        contentId ?: "",
+                        url ?: "",
                         message,
                         errorCode
                     ).toReactMap()

@@ -646,8 +646,8 @@ obj/
 
 # End of https://www.toptal.com/developers/gitignore/api/reactnative,intellij,kotlin,xcode,android,androidstudio,swift,git,gradle
 
-pallycon-*.tgz
-pallycon-test
+doverunner-*.tgz
+doverunner-test
 yarn.lock
 examples/basic/.yarn/
 examples/basic/ios/*.lock

@@ -1,4 +1,6 @@
 export interface MultiDrmReceiveEvent {
-    /** The track url */
-    url: string;
+  /** The content ID */
+  contentId: string;
+  /** The track url */
+  url: string;
 }
