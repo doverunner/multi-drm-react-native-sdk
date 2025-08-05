@@ -18,7 +18,7 @@
 		B4E0AAE829D3CB2200FEC09F /* DownloadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0AAE729D3CB2200FEC09F /* DownloadState.swift */; };
 		B4F31F4829873B6100A916D3 /* FairPlayReactNativeSdkBridge.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3E7B5881CC2AC0600A0062D /* FairPlayReactNativeSdkBridge.h */; };
 		B4F31F4C2987404B00A916D3 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F31F4B2987404B00A916D3 /* EventEmitter.swift */; };
-		C15E64482DAF3B6F00F5A313 /* DOVERUNNERFairPlay.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15E64472DAF3B6F00F5A313 /* DOVERUNNERFairPlay.xcframework */; };
+		C15E64482DAF3B6F00F5A313 /* DoveRunnerFairPlay.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15E64472DAF3B6F00F5A313 /* DoveRunnerFairPlay.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,7 +58,7 @@
 		B4E0AAE529D3CAC900FEC09F /* FairPlaySdkEventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairPlaySdkEventType.swift; sourceTree = "<group>"; };
 		B4E0AAE729D3CB2200FEC09F /* DownloadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadState.swift; sourceTree = "<group>"; };
 		B4F31F4B2987404B00A916D3 /* EventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitter.swift; sourceTree = "<group>"; };
-		C15E64472DAF3B6F00F5A313 /* DOVERUNNERFairPlay.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DOVERUNNERFairPlay.xcframework; path = ../../temp/2.5.0/lib/DOVERUNNERFairPlay.xcframework; sourceTree = "<group>"; };
+		C15E64472DAF3B6F00F5A313 /* DoveRunnerFairPlay.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DoveRunnerFairPlay.xcframework; path = ../../temp/2.5.0/lib/DoveRunnerFairPlay.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C15E64482DAF3B6F00F5A313 /* DOVERUNNERFairPlay.xcframework in Frameworks */,
+				C15E64482DAF3B6F00F5A313 /* DoveRunnerFairPlay.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +100,7 @@
 		B41F404429DA95DF00392AC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C15E64472DAF3B6F00F5A313 /* DOVERUNNERFairPlay.xcframework */,
+				C15E64472DAF3B6F00F5A313 /* DoveRunnerFairPlay.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

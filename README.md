@@ -10,12 +10,12 @@
 
 ## **Important**
 
-- To develop using the SDK, you must first sign up for the [DOVERUNNER Site][1] and obtain a `Site ID`.
+- To develop using the SDK, you must first sign up for the [DoveRunner Site][1] and obtain a `Site ID`.
 
 ## **Dependencies**
 
-- Multi DRM React Native SDK uses `DOVERUNNER Multi-DRM SDK` and `react-native-video`.
-  - To add `DOVERUNNER Multi-DRM Sdk` to your React-Native app, read the [Installation][2] instructions.
+- Multi DRM React Native SDK uses `DoveRunner Multi-DRM SDK` and `react-native-video`.
+  - To add `DoveRunner Multi-DRM Sdk` to your React-Native app, read the [Installation][2] instructions.
   - To add `react-native-video` to your React-Native app, read the [React Native Video](#react-native-video) instructions.
 
 - `doverunner-react-native-sdk` and `react-native-video` must be added to `package.json`.
@@ -30,8 +30,8 @@
 
 ### Set Native Multi-DRM SDK - Android, iOS
 
-- The `doverunner-react-native-sdk` uses the [DOVERUNNER Multi-DRM SDK][3].
-- This `DOVERUNNER Multi-DRM SDK` is used to acquire and manage licences. 
+- The `doverunner-react-native-sdk` uses the [DoveRunner Multi-DRM SDK][3].
+- This `DoveRunner Multi-DRM SDK` is used to acquire and manage licences. 
 - SDK is applied to Android and iOS platforms, and the settings and usage methods for each platform are as follows.
 
 #### **Android**
@@ -70,7 +70,7 @@
 
 #### **iOS**
 
-- `doverunner-react-native-sdk` uses cocoapods to install `DOVERUNNER Multi-DRM iOS SDK`.
+- `doverunner-react-native-sdk` uses cocoapods to install `DoveRunner Multi-DRM iOS SDK`.
 
   > For information on how to install and use cocoapods, please refer to the [cocoapods official website][5].
 
@@ -78,7 +78,7 @@
 
     ```pod
     # examples/advanced/ios/Podfile
-    pod 'DOVERUNNERFairPlay'
+    pod 'DoveRunnerFairPlay'
     ```
 
 
@@ -87,8 +87,8 @@
 - The example project in `doverunner-react-native-sdk` uses [react-native-video][6] to play DRM content.
 - `react-native-video` is a library that provides a video component for React Native.
   - `react-native-video` is a fork of [react-native-video][7].
-  - forked from `react-native-video` to apply `DOVERUNNER Multi-DRM SDK`.
-- The provided `react-native-video` is applied with `DOVERUNNER Multi-DRM SDK`, and if you use `doverunner-react-native-sdk`, you need to configure it like below.
+  - forked from `react-native-video` to apply `DoveRunner Multi-DRM SDK`.
+- The provided `react-native-video` is applied with `DoveRunner Multi-DRM SDK`, and if you use `doverunner-react-native-sdk`, you need to configure it like below.
 
   ```json
   "_comment": "path : examples/advanced/package.json or examples/basic/package.json",

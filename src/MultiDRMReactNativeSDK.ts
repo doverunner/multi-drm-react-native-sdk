@@ -16,7 +16,7 @@ const emitter =
 /**
  * Initializes the MultiDrmSdk.
  *
- * @param siteId issued by the DOVERUNNER.
+ * @param siteId issued by the DoveRunner.
  */
 export function initialize(siteId: String) {
     return ReactMultiDrmSdk.initialize(siteId);
