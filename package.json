@@ -41,12 +41,11 @@
     "inka-entworks",
     "inka"
   ],
-  "author": "Haru Yun <haru.yun@doverunner.com> (https://doverunner.com)",
+  "author": "DOVERUNNER (https://doverunner.com)",
   "license": "Apache-2.0",
   "homepage": "https://doverunner.com",
   "contributors": [
-    "Haru Yun <haru.yun@doverunner.com> (https://doverunner.com)",
-    "Brandon Park <brandon.park@doverunner.com> (https://doverunner.com)"
+    "DOVERUNNER Multi-DRM SDK(support@doverunner.zendesk.com)"
   ],
   "devDependencies": {
     "@babel/core": "^7.26.10",
@@ -54,7 +53,7 @@
     "@types/babel__core": "^7",
     "@types/babel__preset-env": "^7",
     "@types/react-native": "^0.68.20",
-    "react": "^18.3.0",
+    "react": "^18.3.1",
     "react-native": "0.76.9"
   },
   "dependencies": {
