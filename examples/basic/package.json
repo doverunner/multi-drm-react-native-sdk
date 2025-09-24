@@ -15,8 +15,8 @@
     "doverunner-react-native-sdk": "file:../../doverunner-react-native-sdk-1.2.0.tgz",
     "react": "18.3.1",
     "react-native": "^0.76.9",
-    "react-native-svg": "^15.11.2",
-    "react-native-svg-transformer": "^1.5.1",
+    "react-native-svg": "15.11.2",
+    "react-native-svg-transformer": "1.5.1",
     "react-native-video": "git+https://github.com/doverunner/react-native-video.git"
   },
   "devDependencies": {
@@ -27,7 +27,7 @@
     "@react-native-community/cli-platform-ios": "15.0.1",
     "@react-native-community/eslint-config": "^3.2.0",
     "@types/react": "^18.2.0",
-    "@types/react-native-video": "^5.0.20",
+    "@types/react-native-video": "^5.0.10",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
     "babel-jest": "^29.4.0",
@@ -38,6 +38,9 @@
     "prettier": "^2.8.8",
     "react-test-renderer": "18.3.1",
     "typescript": "^5.0.4"
+  },
+  "resolutions": {
+    "@react-native/gradle-plugin": "0.76.9"
   },
   "jest": {
     "preset": "react-native"

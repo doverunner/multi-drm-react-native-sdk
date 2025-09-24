@@ -9,14 +9,6 @@ buildscript {
     }
     repositories {
         mavenLocal()
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/doverunner/widevine-android-sdk")
-            credentials {
-                username = "Git Hub User ID"
-                password = "Token"
-            }
-        }
         google()
         mavenCentral()
     }
@@ -31,6 +23,14 @@ allprojects {
     repositories {
         mavenLocal() 
         google()
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/doverunner/widevine-android-sdk")
+            credentials {
+                username = "Git Hub User ID"
+                password = "Token"
+            }
+        }
         mavenCentral()
     }
 }
