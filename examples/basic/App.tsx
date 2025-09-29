@@ -101,6 +101,7 @@ const App = () => {
                     headers: { MultiDrmJson: decodedJson }
                 }}
                 style={viewStyle}
+                resizeMode="contain"
                 rate={state.rate}
                 paused={state.paused}
                 volume={state.volume}

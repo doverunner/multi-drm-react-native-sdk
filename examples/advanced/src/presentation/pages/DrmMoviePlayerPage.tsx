@@ -8,11 +8,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native"
-import Video, { VideoRef } from "react-native-video"
+import Video from "react-native-video"
 import base64 from "react-native-base64"
 import Toast from "react-native-toast-message"
 
 export default function DrmMoviePlayerPage({ route }: any) {
+  const VideoComponent: any = Video
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -178,7 +179,7 @@ export default function DrmMoviePlayerPage({ route }: any) {
     showRNVControls: true,
   }
 
-  const videoRef = useRef<VideoRef>(null)
+  const videoRef = useRef<any>(null)
 
   const onLoad = (data: any) => {
     console.log("onLoad")
@@ -221,13 +222,14 @@ export default function DrmMoviePlayerPage({ route }: any) {
 
   return (
     <TouchableOpacity style={viewStyle}>
-      <Video
+      <VideoComponent
         ref={videoRef}
         source={{
           uri: videoUrl, // URL을 여기에 추가
           headers: { MultiDrmJson: decodedJson },
         }}
         style={viewStyle}
+        resizeMode="contain"
         rate={state.rate}
         paused={state.paused}
         volume={state.volume}
