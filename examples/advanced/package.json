@@ -14,7 +14,7 @@
     "@react-native/metro-config": "^0.76.9",
     "@react-navigation/native": "^6.1.5",
     "@react-navigation/native-stack": "^6.9.11",
-    "doverunner-react-native-sdk": "file:../../doverunner-react-native-sdk-1.2.0.tgz",
+    "doverunner-react-native-sdk": "git+https://github.com/doverunner/multi-drm-react-native-sdk.git",
     "react": "18.3.1",
     "react-native": "0.76.9",
     "react-native-base64": "^0.2.1",

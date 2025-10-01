@@ -12,7 +12,7 @@
     "clear": "rm -rf ./node_modules"
   },
   "dependencies": {
-    "doverunner-react-native-sdk": "file:../../doverunner-react-native-sdk-1.2.0.tgz",
+    "doverunner-react-native-sdk": "git+https://github.com/doverunner/multi-drm-react-native-sdk",
     "react": "18.3.1",
     "react-native": "^0.76.9",
     "react-native-svg": "15.11.2",
