@@ -6,7 +6,7 @@
 ## **Support Environment**
 
 - Android 6.0 (API 23) & Android targetSdkVersion 34 or higher
-- iOS 14.0 higher
+- iOS 15.1 higher
 
 ## **Important**
 
