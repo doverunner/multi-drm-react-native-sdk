@@ -203,6 +203,24 @@ export default function DrmMoviePlayerPage({ route }: any) {
       text1: err?.error.errorCode,
       text2: err?.error.localizedFailureReason,
     })
+
+    const errorCode = err?.error?.errorCode || "UNKNOWN"
+    const errorDescription = err?.error?.localizedDescription || ""
+    const errorReason = err?.error?.localizedFailureReason || ""
+
+    if (errorCode === "50000" || errorCode === 50000) {
+      Toast.show({
+        type: "error",
+        text1: "license expired",
+      })
+      return
+    }
+    
+    Toast.show({
+      type: "error",
+      text1: `Error Code: ${errorCode}`,
+      text2: errorReason || errorDescription || "An error occurred while playing.",
+    })
   }
 
   const viewStyle = state.fullscreen ? styles.fullScreen : styles.halfScreen
